@@ -1,0 +1,39 @@
+.navbar {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.navbar-dark  {
+    .navbar-brand {
+        color: $color-font-primary;
+        padding-bottom: auto;
+        padding-top: auto;
+        border-bottom: solid 2px transparent;
+
+        &:hover,
+        &:focus {
+            color: $color-font-primary;
+        }
+
+        svg {
+            margin-right: .6em;
+        }
+    }
+
+    .navbar-nav {
+        .nav-link {
+            color: $color-font-secondary;
+            margin-bottom: 0;
+            padding-bottom: 1.25rem;
+            padding-top: 1.25rem;
+            border-bottom: solid 2px transparent;
+
+            &:hover,
+            &:active,
+            &:focus{
+                color: $color-font-primary;
+                border-bottom-color:$color-font-primary;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+%y-padding {
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+}
+
+%y-margin {
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+}
+
+%header {
+    @include flexy($dir: row, $just: space-between, $align: center);
+    color: $color-font-secondary;
+    background: $color-primary;
+    width: 100%;
+}

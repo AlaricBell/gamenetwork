@@ -1,0 +1,13 @@
+$color-primary: #343a40;
+$color-secondary: lighten(#343a40, 4%);
+$color-tertiary: lighten(#343a40, 2%);
+$color-font-primary: #00FF6D;
+$color-font-secondary: #FFF;
+
+$weights: (
+	'thin'	: 100,
+	'light'	: 300,
+	'normal': 400,
+	'bold'	: 600,
+	'ultra'	: 800
+);

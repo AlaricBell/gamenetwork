@@ -1,0 +1,169 @@
+.container {
+    background-color: $color-secondary;
+
+    &-hero {
+        @extend %y-margin;
+        padding: 0;
+        background: $color-tertiary;
+        border-radius: 10px;
+
+        &-info {
+            @include flexy($dir: row, $just: space-between, $align: flex-start);
+            padding: 1.25rem;
+        }
+
+        &-card {
+            @extend %y-margin;
+        }
+    }
+
+    &-profile {
+        &-season {
+            margin-top: -10px;
+            z-index: 100000;
+        }
+
+        &-stats {
+        }
+
+        &-details {
+            margin-top: -70px;
+            padding-top: 80px;
+            padding-bottom: .75rem;
+            background: $color-primary;
+        
+            .container-profile-stats {
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        &-background {
+            min-width: 100%;
+            height: 12.25rem;
+            background-image: url("/img/apex.jpg");
+            background-size: cover;
+            background-origin: content-box;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            margin-bottom: -55px;
+        }
+
+        &-bg {
+            padding: 0;
+            background: $color-tertiary;
+        }
+
+        &-main {
+            @include flexy($dir: row, $just: flex-start, $align: center);
+            z-index: 1000;
+            background: $color-tertiary;
+            height: 110px;
+        }
+
+        &-menu {
+            @include flexy($dir: column, $just: center, $align: flex-start);
+            margin-left: 1.25rem;
+            height: 100%;
+            z-index: 1000;
+
+            p,
+            h2,
+            a {
+                margin: 0;
+                color: $color-font-secondary;
+            }
+
+            h2 {
+                margin-bottom: 20px;
+            }
+
+            svg {
+                margin-right: .45rem;
+            }
+        }
+    }
+    
+
+    &-avatar {
+        @include flexy($dir: row, $just: flex-start, $align: center);
+        background: linear-gradient(darken($color-font-primary, 20%) ,$color-font-primary);
+        padding: 1.25rem;
+        z-index: 1000;
+
+        &-header {
+            @extend %y-padding;
+            margin-top: 1.25rem;
+            background: $color-primary;
+            
+            h2,
+            p {
+                margin-bottom: 0;
+                color: $color-font-secondary;
+                font-weight: weight(bold);
+            }
+        }
+
+        &-img {
+            margin-right: 1.2em;
+            @include flexy($just: center, $align: center);
+        }
+
+        &-info {
+            @include flexy($dir: column, $just: center, $align: flex-start);
+            color: $color-primary;
+
+            p {
+                font-weight: weight(bold);
+            }
+
+            p,
+            h4 {
+                margin-bottom: .2rem;
+            }
+        }
+    }
+}
+
+.menu {
+    &-items {
+        @include flexy($dir: row, $just: flex-start, $align: center);
+        &-right {
+            p,
+            a {
+                margin-left: 1.25rem;
+            }
+        }
+
+        &-left {
+            p,
+            a {
+                padding-right: .45rem;
+            }
+
+            a:nth-of-type(1n+2) {
+                padding-left: .45rem;
+                border-left: solid 1px $color-font-primary;
+            }
+
+            a:hover {
+                color: $color-font-primary;
+            }
+
+            a:hover,
+            a:focus,
+            a:active {
+                text-decoration: none;
+            }
+        }
+    }  
+    
+    &-left {
+        margin-right: auto;
+        align-items: flex-start;
+    }
+
+    &-right {
+        margin-left: auto;
+        align-items: flex-end;
+    }
+}

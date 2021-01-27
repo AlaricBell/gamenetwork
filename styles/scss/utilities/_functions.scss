@@ -1,0 +1,38 @@
+@function weight($weight) {
+	@if $weight == "thin" {
+		@return map-get($weights, thin);
+	}
+	@else if $weight == "light" {
+		@return map-get($weights, light);
+	}
+	@else if $weight == "normal" {
+		@return map-get($weights, normal);
+	}
+	@else if $weight == "bold" {
+		@return map-get($weights, bold);
+	}
+	@else if $weight == "ultra" {
+		@return map-get($weights, ultra);
+	}
+	@else {
+		@error "#{$weight} is not a valid value!"
+	}
+}
+
+@function breakpoint($break) {
+	@if $break == "small" {
+		@return map-get($breakpoints, sm);
+	}
+	@else if $break == "medium" {
+		@return map-get($breakpoints, md);
+	}
+	@else if $break == "large" {
+		@return map-get($breakpoints, lg);
+	}
+	@else if $break == "ultra" {
+		@return map-get($breakpoints, xl);
+	}
+	@else {
+		@error "#{$break} is not a valid value!"
+	}
+}
