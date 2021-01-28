@@ -1,6 +1,16 @@
 .container {
     background-color: $color-secondary;
 
+    &-graph {
+        &-buttons {
+            @include flexy($dir: column, $just: center, $align: flex-start);
+        }
+
+        &-legend {
+            @include flexy($dir: column, $just: center, $align: center);
+        }
+    }
+
     &-hero {
         @extend %y-margin;
         padding: 0;

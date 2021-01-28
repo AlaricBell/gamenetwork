@@ -8,6 +8,11 @@
   margin-bottom: 0.6rem;
 }
 
+.input-grp-graph input[type=radio] {
+  margin-right: 0.6rem;
+  margin-left: 0.6rem;
+}
+
 .header, #overview {
   display: flex;
   flex-direction: row;
@@ -168,6 +173,18 @@ footer .copy {
 
 .container {
   background-color: #3d444b;
+}
+.container-graph-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.container-graph-legend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .container-hero {
   padding: 0;

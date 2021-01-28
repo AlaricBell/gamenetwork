@@ -3,7 +3,7 @@ import { getAllProfileId, getOverallProfileData } from '../../lib/profiles';
 import Link from 'next/link';
 import connect from '../../database/dbConnect';
 import Image from 'next/image';
-import Graph from '../../components/graph';
+import GraphDetail from '../../components/graphDetail';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faPlaystation        
@@ -78,7 +78,7 @@ export default function Playstation({profileData}) {
                 <div className="menu-items menu-items-left">
                   <Link href="#"><a>Overview</a></Link>
                   <Link href="#"><a>Matches</a></Link>
-                  <Link href="#"><a>Link</a></Link>
+                  <Link href="#"><a>Statistics</a></Link>
                 </div>
               </div>
 
@@ -463,7 +463,7 @@ export default function Playstation({profileData}) {
           })} 
           </div>
 
-          <Graph 
+          <GraphDetail 
           legends={getLegends(profileData.segments)}/>
         </Layout>
     );

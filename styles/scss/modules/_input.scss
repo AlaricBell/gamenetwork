@@ -1,0 +1,10 @@
+.input {
+    &-grp {
+        &-graph {
+
+            input[type="radio"] {
+                @extend %x-margin;
+            }
+        }
+    }
+}
