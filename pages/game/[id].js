@@ -6,20 +6,22 @@ import Image from 'next/image';
 import GraphDetail from '../../components/graphDetail';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-  faPlaystation        
+  faPlaystation,
+  faXbox        
 } from "@fortawesome/free-brands-svg-icons";
 import { 
   faEye      
 } from "@fortawesome/free-regular-svg-icons";
 import { 
-  faGlobe        
+  faGlobe,
+  faDesktop        
 } from "@fortawesome/free-solid-svg-icons";
 
 export async function getStaticPaths() {
     //const paths = getAllProfileId()
     connect();
     const profiles = await getAllProfileId();
-    const paths = profiles.map(profile => `/playstation/${profile._id}`);
+    const paths = profiles.map(profile => `/game/${profile._id}`);
 
     return {
       paths,
@@ -54,6 +56,19 @@ const getHeadshots = (headshots) => {
   return headshots;
 }
 
+const getPlatform = (platform) => {
+  switch(platform) {
+    case "psn":
+      return <FontAwesomeIcon icon={faPlaystation} style={{width: '30px', height: '30px'}}/>;
+    case "xbl":
+      return <FontAwesomeIcon icon={faXbox} style={{width: '30px', height: '30px'}}/>;
+    case "origin":
+      return <FontAwesomeIcon icon={faDesktop} style={{width: '30px', height: '30px'}}/>;
+    default:
+      return <FontAwesomeIcon icon={faDesktop} style={{width: '30px', height: '30px'}}/>;
+  }
+}
+
 const percentage = (context) => {
   return (100 - context).toPrecision(1);
 }
@@ -74,7 +89,7 @@ export default function Playstation({profileData}) {
                 height={100}/>
               
               <div className="container-profile-menu menu-left">
-                <h2><FontAwesomeIcon icon={faPlaystation} style={{width: '30px', height: '30px'}}/>{profileData.platformInfo.platformUserId}</h2>
+                <h2>{getPlatform(profileData.platformInfo.platformSlug)}{profileData.platformInfo.platformUserId}</h2>
                 <div className="menu-items menu-items-left">
                   <Link href="#"><a>Overview</a></Link>
                   <Link href="#"><a>Matches</a></Link>

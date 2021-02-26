@@ -32,7 +32,7 @@ export default async (req, res) => {
         if(profile.length == 0) {
             profile = await Profile.create({data: data.data.data});  
             const response = profile.save();
-            res.status(200).redirect(`/playstation/${profile._id}`);
+            res.status(200).redirect(`/game/${profile._id}`);
         } else {
             profile = await Profile.findByIdAndUpdate(profile[0]._id, data.data.data, {
                 new: true,
@@ -42,7 +42,7 @@ export default async (req, res) => {
             if(!profile) {
                 return res.status(400).json({success: false});
             }
-            res.status(200).redirect(`/profile/${profile._id}`);
+            res.status(200).redirect(`/game/${profile._id}`);
         }
     } catch(error) {
         res.status(500).json({message: error.message});

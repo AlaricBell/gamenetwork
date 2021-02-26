@@ -13,6 +13,7 @@ a {
 
     &:hover {
         color: $color-font-secondary;
+        text-decoration: none;
     }
 }
 
@@ -29,4 +30,20 @@ h5,
 h6,
 p {
     margin: 0;
+}
+
+button {
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
+input {
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+    }
 }

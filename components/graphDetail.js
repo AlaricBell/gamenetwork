@@ -1,11 +1,25 @@
 import React, {Component} from 'react';
-import {Bar} from 'react-chartjs-2';
 import Graph from './graph';
 import Legend from './legend';
 
 export default class GraphDetail extends Component {
     state = {
         options: ["matchesPlayed", "kills", "damage"],
+        currentOpt: "matchesPlayed",
+        top: [
+            {
+                name: "",
+                image: "",
+                value: "",
+                filter: "",
+            },
+            {
+                name: "",
+                image: "",
+                value: "",
+                filter: "",
+            }
+        ],
         data : {
             labels: [],
             datasets: [{
@@ -36,12 +50,36 @@ export default class GraphDetail extends Component {
             let data = Object.assign({}, prevState.data)
             data.labels = legends.map(legend => legend.metadata.name)
             data.datasets[0].data = legends.map(legend => legend.stats[filter].value);
-            return {data};
+
+            let top = Object.assign({}, prevState.top)
+            const max = Math.max(...data.datasets[0].data);
+            let legendsClone = [...legends];
+            legendsClone = legendsClone.sort((legendA, legendB) => legendA.stats[filter].value < legendB.stats[filter].value ? 1 : -1);
+            top[0].name = legendsClone[0].metadata.name;
+            top[0].image = legendsClone[0].metadata.tallImageUrl;
+            top[0].value = legendsClone[0].stats[filter].displayValue;
+            top[0].filter = filter;
+            top[1].name = legendsClone[1].metadata.name;
+            top[1].image = legendsClone[1].metadata.tallImageUrl;
+            top[1].value = legendsClone[1].stats[filter].displayValue;
+            top[1].filter = filter;
+            return {data, 
+                    top,
+                    currentOpt: filter};
+        })
+    }
+
+    getLegendTop = (legends, filter) => {
+        this.setState(prevState => {
+            const data = legends.map(legend => legend.stats[filter].value);
+            const max = Math.max(...data);
+            const legend = legends.filter(legend => legend.stats[filter].value == max);
+            return {legendImage: legend[0].metadata.tallImageUrl};
         })
     }
 
     componentDidMount() {
-        this.getGraphData(this.props.legends, "matchesPlayed"); 
+        this.getGraphData(this.props.legends, this.state.currentOpt); 
     }
 
     render() {
@@ -67,7 +105,7 @@ export default class GraphDetail extends Component {
                     </div>
 
                     <Legend
-                    legends={this.props.legends}/>
+                    top={[this.state.top[0], this.state.top[1]]}/>
                 </div>
             </div>
         )

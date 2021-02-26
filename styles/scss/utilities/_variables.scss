@@ -2,6 +2,7 @@ $color-primary: #343a40;
 $color-secondary: lighten(#343a40, 4%);
 $color-tertiary: lighten(#343a40, 2%);
 $color-font-primary: #00FF6D;
+$color-font-primary-dark: darken(#00FF6D, 12%);
 $color-font-secondary: #FFF;
 
 $weights: (
@@ -10,4 +11,11 @@ $weights: (
 	'normal': 400,
 	'bold'	: 600,
 	'ultra'	: 800
+);
+
+$breakpoints: (
+	'sm': 576px,
+	'md': 768px,
+	'lg': 991px,
+	'xl': 1200px
 );

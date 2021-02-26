@@ -18,6 +18,5 @@ export default function Footer() {
                     <p className="copy"><small>&copy; This site was created for educational purpose by Molnar David</small></p>
             </div>
         </footer>
-        
     )
 }

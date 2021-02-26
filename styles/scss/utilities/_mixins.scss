@@ -5,3 +5,25 @@
 	justify-content: $just;
 	align-items: $align;
 }
+
+@mixin mq($break) {
+	@if $break == "small" {
+		@media (max-width: breakpoint(medium)) {
+			@content;
+		}
+	} @else if $break == "medium" {
+		@media (min-width: breakpoint(medium)) and (max-width: breakpoint(large)) {
+			@content;
+		}
+	} @else if $break == "large" {
+		@media (min-width: breakpoint(large)) and (max-width: breakpoint(ultra)) {
+			@content;
+		}
+	} @else if $break == "ultra" {
+		@media (min-width: breakpoint(ultra)) {
+			@content;
+		}
+	} @else {
+		@error "#{$break} is not a valid value!";
+	}
+}
