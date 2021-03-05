@@ -6,6 +6,7 @@ export default function({children}) {
     return [
         <div className="layout">
             <Head>
+                
             </Head>
             <Navbar/>
             <div className="container-fluid p-0">{children}</div>

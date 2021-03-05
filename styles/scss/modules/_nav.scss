@@ -1,6 +1,18 @@
 .navbar {
     padding-bottom: 0;
     padding-top: 0;
+    opacity: 1;
+    z-index: 10000;
+    width: 100;
+    //transition: opacity .2s ease-in-out;
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0.9;
+        width: 100%;
+    }
 }
 
 .navbar-dark  {

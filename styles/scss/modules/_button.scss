@@ -1,12 +1,12 @@
 .button-danger {
-    background: #BE3E35;
+    background: transparent;
     color: $color-font-secondary;
     font-weight: weight(bold);
 }
 
 .button-success {
-    background: $color-font-primary-dark;
-    color: $color-font-secondary;
+    background: $color-font-secondary;
+    color: $color-primary;
     font-weight: weight(bold);
 }
 

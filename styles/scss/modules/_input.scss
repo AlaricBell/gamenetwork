@@ -10,63 +10,75 @@
 }
 
 .form {
-    &-profile {
-        padding: .75rem;
-        @include flexy($dir: column, $just: center, $align: center);
-
-        .input-group {
-            width: 100%;
-            margin-bottom: .75rem;
-            @include flexy($dir: row, $just: flex-start, $align: center);
-
-            &:hover label {
-                background: lighten($color-font-primary-dark, 6%);
-            }
-
-            label {
-                min-width: 80px;
-                width: 25%;
-                padding: .45rem .25rem;
-                margin: 0;
-                background: $color-font-primary-dark;
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-                text-align: center;
-            }
-
-            input,
-            select {
-                min-width: 200px;
-                width: 75%;
-                background: $color-secondary;
-                color: $color-font-secondary;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-                padding: .45rem .25rem;
-                border: none;
-            }
-        }
-
-        input[type="submit"] {
-            padding: .25rem .45rem;
-            outline: none;
-            border: none;
-            border-radius: 10px;
-
-            &:hover {
-                background: lighten($color-font-primary-dark, 6%);
-            }
-        }
+    &-header {
+        @include flexy($dir: column, $just: center, $align: center); 
+        text-align: center;
+        color: $color-font-secondary;
     }
 
-    &-header {
-        @include flexy($dir: row, $just: space-between, $align: center);
-        border-bottom: 2px solid $color-font-primary;
-        padding: .45rem .75rem;
+    &-profile {
+        margin-top: .75rem;
+        width: 100%;
+        @include flexy($dir: row, $just: flex-start, $align: center);
+        max-width: 560px;
+        height: auto; 
+        background: transparent;
+        padding: 0 1.25rem;
+
+        select, 
+        input,
+        button {
+            font-size: 18px;
+            font-weight: weight(bold);
+            height: 42px;
+        }
+
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            min-width: 104px;
+            width: 25%;
+            padding: .45rem .25rem;
+            margin: 0;
+            color: $color-font-secondary;
+            background: $color-btn-primary;
+            border: none;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            text-align: center;
+
+            option {
+                color: $color-font-secondary;
+                border: none;
+                outline: none;
+
+                &:hover {
+                    background: lighten($color-btn-primary, 4%);
+                }
+            }
+        }
+
+        input{
+            min-width: 120px;
+            width: 75%;
+            background: $color-font-secondary;
+            color: $color-primary;
+            padding: .45rem .25rem;
+            border: none;
+        }
 
         button {
-            border-radius: 50%;
+            min-width: 28px;
+            outline: none;
             border: none;
+        }
+
+        button[type="submit"] {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
     }
 }

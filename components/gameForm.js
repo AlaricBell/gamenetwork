@@ -1,4 +1,9 @@
 import React, {Component} from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { 
+    faChevronUp,
+    faSearch        
+} from "@fortawesome/free-solid-svg-icons";
 
 export default class GameForm extends Component {
     state = {
@@ -8,19 +13,15 @@ export default class GameForm extends Component {
     }
 
     handleUsername = (e) => {
-        this.setState(prevState => {
-            return {
-                username: e.target.value
-            }
+        this.setState({
+            username: e.target.value
         })
     }
 
     handlePlatform = (e) => {
-        this.setState(prevState => {
-            return {
+        this.setState({
                 platform: e.target.value
-            }
-        })
+            })
     }
 
     generateUri = (platform, username) => {
@@ -31,29 +32,31 @@ export default class GameForm extends Component {
         })
     }
 
+    renderToggleButton = (formShown) => {
+        if(!this.props.isBtnHidden) {
+            return (
+                <button className="button-danger" onClick={() => this.props.hideForm()}><FontAwesomeIcon icon={faChevronUp} style={{width: '20px', height: '20px'}}/></button>
+            );
+        }
+        return null;
+        
+    }
+
     render() {
         if(this.props.formShown) {
             return (   
-                <div className="container-form container-form-center">
-                    <div className="form-header">
-                        <h2>{this.props.game.displayName}</h2>
-                        <button className="button-danger" onClick={() => this.props.hideForm()}>X</button>
-                    </div>
+                <div className="form-header" data-aos="zoom-in">
+                    {this.renderToggleButton(this.props.formShown)}
+                    <h1>{this.props.game.displayName}</h1>
                     <form action={this.state.uri} method="GET" className="form-profile" onSubmit={() => this.generateUri(this.state.platform, this.state.username)}>
-                        <div className="input-group">
-                            <label for="username">Username</label>
-                            <input type="text" name="username" id="username" onChange={this.handleUsername}/>
-                        </div>
-                        <div className="input-group">
-                            <label for="platform">Platform</label>
-                            <select name="platform" id="platform" onChange={this.handlePlatform}>
-                                <option value="" hidden selected>Select a platform</option>
-                                {this.props.game.platforms.map(platform => (
-                                    <option value={platform.platformValue}>{platform.platformDisplay}</option> 
-                                ))}
-                            </select>
-                        </div>
-                      <input type="submit" name="username" value="Search" className="button-success"/>
+                        <select name="platform" id="platform" onChange={this.handlePlatform}>
+                        <option value="" hidden selected>Platform</option>
+                        {this.props.game.platforms.map(platform => (
+                            <option value={platform.platformValue}>{platform.platformDisplay}</option> 
+                        ))}
+                        </select>
+                        <input type="text" name="username" id="username" onChange={this.handleUsername}/>
+                        <button type="submit" name="submit-game" value="Search" className="button-success"><FontAwesomeIcon icon={faSearch} style={{width: '20px', height: '20px'}}/></button>
                     </form>
                 </div>
             )

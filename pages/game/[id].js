@@ -354,7 +354,7 @@ export default function Playstation({profileData}) {
           <div className="container pb-4">
           {getLegends(profileData.segments).map((legend, index) => {
             return(
-              <div className="col-12 container-hero" key={index}>
+              <div className="col-12 container-hero" data-aos="fade-right" key={index}>
                 <div className="header">
                   <h2>{legend.metadata.name}</h2>
                   <p>Matches Played: <strong>{legend.stats.matchesPlayed.displayValue}</strong></p>

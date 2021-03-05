@@ -2,19 +2,38 @@
     @extend %header;
 }
 
+header {
+    height: 66px;
+    z-index: 10000;
+}
+
+@include mq(small) {
+    header {
+        height: 42px;
+    }
+}
+
+@include mq(medium) {
+    header {
+        height: 42px;
+    }
+}
+
 .header {
     @extend %header;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     padding: .8rem;
-
     &-main {
-        @include flexy($dir: row, $just: space-between, $align: center);
+        padding: 1.25rem 0;
+
+        .row {
+            @include flexy($dir: row, $just: space-between, $align: center);
+        }
 
         &-item {
             width: 50%;
-            padding-top: 1.25rem;
-            padding-bottom: 1.25rem;
+            padding: 1.25rem;
             color: $color-font-secondary;
 
             h2 {
@@ -90,13 +109,8 @@
                 }
             }
 
-            &:nth-child(1) {
-                padding-right: 1.25rem;
-            }
-
             &:nth-child(2) {
                 text-align: center;
-                padding-left: 1.25rem;
             }
         }
     }

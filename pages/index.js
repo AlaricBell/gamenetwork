@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import GameForm from '../components/gameForm'
-import Head from 'next/head'
-import Link from 'next/link'
+import About from '../components/about'
+import Feature from '../components/feature';
 import Layout from '../components/layout/layout-main';
 import { getAllGameData } from '../lib/games';
 import Image from 'next/image';
@@ -50,16 +50,18 @@ export default class Home extends Component {
     return (
       <Layout>
         <div className="container header-main">
-          <div className="header-main-item">
-            <h2>Gamer <span>Network</span></h2>
-            <p>Competitive gaming is hard, let us make it easier for you.<br/> Enjoy your games and do your best, we will follow your improvement and provide all the statistics you need.</p>
-          </div>
-          <div className="header-main-item">
-            <h2>Check us out on social media!</h2>
-            <ul>
-              <li><FontAwesomeIcon icon={faDiscord}/><span>Discord</span></li>
-              <li><span>Youtube</span><FontAwesomeIcon icon={faYoutube}/></li>
-            </ul>
+          <div className="row">
+            <div className="header-main-item col-12 col-md-6">
+              <h2>Gamer <span>Network</span></h2>
+              <p>Competitive gaming is hard, let us make it easier for you.<br/> Enjoy your games and do your best, we will follow your improvement and provide all the statistics you need.</p>
+            </div>
+            <div className="header-main-item col-12 col-md-6">
+              <h2>Check us out on social media!</h2>
+              <ul>
+                <li><FontAwesomeIcon icon={faDiscord}/><span>Discord</span></li>
+                <li><span>Youtube</span><FontAwesomeIcon icon={faYoutube}/></li>
+              </ul>
+            </div>
           </div>
         </div>
   
@@ -84,11 +86,15 @@ export default class Home extends Component {
         <GameForm 
         formShown={this.state.formShown}
         game={this.state.game}
-        hideForm={this.hideForm}/>
+        hideForm={this.hideForm}
+        isBtnHidden={false}/>
 
         <div className="container container-quote">
             <q>Competitive gaming is hard, let us make it easier for you.<br/> Enjoy your games and do your best, we will follow your improvement and provide all the statistics you need.</q>
         </div>
+
+        <About/>
+        <Feature />
       </Layout>
     )
   }
