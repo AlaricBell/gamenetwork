@@ -4,22 +4,14 @@ import Legend from './legend';
 
 export default class GraphDetail extends Component {
     state = {
-        options: ["matchesPlayed", "kills", "damage"],
-        currentOpt: "matchesPlayed",
-        top: [
-            {
+        options: [],
+        currentOpt: "",
+        top: {
                 name: "",
                 image: "",
                 value: "",
                 filter: "",
             },
-            {
-                name: "",
-                image: "",
-                value: "",
-                filter: "",
-            }
-        ],
         data : {
             labels: [],
             datasets: [{
@@ -30,7 +22,11 @@ export default class GraphDetail extends Component {
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(242, 5, 5, 0.2)',
+                'rgba(217, 208, 199, 0.2)',
+                'rgba(43, 28, 140, 0.2)',
               ],
               borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -38,7 +34,11 @@ export default class GraphDetail extends Component {
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(242, 5, 5, 1)',
+                'rgba(217, 208, 199, 1)',
+                'rgba(43, 28, 140, 1)',
               ],
               borderWidth: 1
             }]
@@ -46,40 +46,78 @@ export default class GraphDetail extends Component {
     }
 
     getGraphData = (legends, filter) => {
+        legends = legends.filter(legend => legend.stats[filter]);
         this.setState(prevState => {
             let data = Object.assign({}, prevState.data)
             data.labels = legends.map(legend => legend.metadata.name)
             data.datasets[0].data = legends.map(legend => legend.stats[filter].value);
 
             let top = Object.assign({}, prevState.top)
-            const max = Math.max(...data.datasets[0].data);
             let legendsClone = [...legends];
             legendsClone = legendsClone.sort((legendA, legendB) => legendA.stats[filter].value < legendB.stats[filter].value ? 1 : -1);
-            top[0].name = legendsClone[0].metadata.name;
-            top[0].image = legendsClone[0].metadata.tallImageUrl;
-            top[0].value = legendsClone[0].stats[filter].displayValue;
-            top[0].filter = filter;
-            top[1].name = legendsClone[1].metadata.name;
-            top[1].image = legendsClone[1].metadata.tallImageUrl;
-            top[1].value = legendsClone[1].stats[filter].displayValue;
-            top[1].filter = filter;
-            return {data, 
+            top.name = legendsClone[0].metadata.name;
+            top.image = legendsClone[0].metadata.tallImageUrl;
+            top.value = legendsClone[0].stats[filter].displayValue;
+            top.filter = filter;
+            return {data,
                     top,
                     currentOpt: filter};
         })
     }
 
-    getLegendTop = (legends, filter) => {
-        this.setState(prevState => {
-            const data = legends.map(legend => legend.stats[filter].value);
-            const max = Math.max(...data);
-            const legend = legends.filter(legend => legend.stats[filter].value == max);
-            return {legendImage: legend[0].metadata.tallImageUrl};
+    renderFilterOptions = (legends, option) => {
+        return (
+            <div className="input-grp-graph">
+                <input type="radio" name="graph" value={option.value} id="radio-match" onClick={() => this.getGraphData(legends, option.value)}/>
+                <label for="radio-match">{option.display}</label>
+            </div>
+        )
+    }
+
+    setOptions = (legends) => {
+        let options = [];
+        let matches, kills, damage, killsPerMatch, headshots = false;
+        legends.forEach(legend => {
+            if(legend.stats.matchesPlayed){
+                matches = true;
+            }
+            if(legend.stats.damage){
+                damage = true;
+            }
+            if(legend.stats.kills){
+                kills = true
+            }
+            if(legend.stats.killsPerMatch){
+                killsPerMatch = true
+            }
+            if(legend.stats.headshots){
+                headshots = true
+            }
         })
+
+        if(matches) {
+            options.push({value: "matchesPlayed", display: "Matches"})
+        }
+        if(damage) {
+            options.push({value: "damage", display: "Damage"})
+        }
+        if(kills) {
+            options.push({value: "kills", display: "Kills"})
+        }
+        if(killsPerMatch) {
+            options.push({value: "killsPerMatch", display: "Average kills"})
+        }
+        if(headshots) {
+            options.push({value: "headshots", display: "Headshots"})
+        }
+        this.setState({
+            options,
+        })
+        return options[0].value;
     }
 
     componentDidMount() {
-        this.getGraphData(this.props.legends, this.state.currentOpt); 
+        this.getGraphData(this.props.legends, this.setOptions(this.props.legends)); 
     }
 
     render() {
@@ -90,22 +128,13 @@ export default class GraphDetail extends Component {
                     data={this.state.data}/>
 
                     <div className="col-2 container-graph-buttons">
-                        <div className="input-grp-graph">
-                            <input type="radio" name="graph" value={this.state.options[0]} id="radio-match" onClick={() => this.getGraphData(this.props.legends, this.state.options[0])}/>
-                            <label for="radio-match">Matches</label>
-                        </div>
-                        <div className="input-grp-graph">
-                            <input type="radio" name="graph" value={this.state.options[1]} id="radio-kills" onClick={() => this.getGraphData(this.props.legends, this.state.options[1])}/>
-                            <label for="radio-kills">Kills</label>
-                        </div>
-                        <div className="input-grp-graph">
-                            <input type="radio" name="graph" value={this.state.options[2]} id="radio-damage" onClick={() => this.getGraphData(this.props.legends, this.state.options[2])}/>
-                            <label for="radio-damage">Damage</label>
-                        </div>        
+                        {this.state.options.map(option => (
+                            this.renderFilterOptions(this.props.legends, option)
+                        ))}
                     </div>
 
                     <Legend
-                    top={[this.state.top[0], this.state.top[1]]}/>
+                    top={this.state.top}/>
                 </div>
             </div>
         )

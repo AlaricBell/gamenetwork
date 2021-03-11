@@ -10,6 +10,6 @@ module.exports = withCSS(withImages(withSass({
 
 module.exports = {
   images: {
-    domains: ['avatar-cdn.tracker.gg', 'trackercdn.com'],
+    domains: ['avatar-cdn.tracker.gg', 'trackercdn.com', 'secure.download.dm.origin.com'],
   },
 }

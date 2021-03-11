@@ -89,6 +89,8 @@ export default class Home extends Component {
         hideForm={this.hideForm}
         isBtnHidden={false}/>
 
+        
+
         <div className="container container-quote">
             <q>Competitive gaming is hard, let us make it easier for you.<br/> Enjoy your games and do your best, we will follow your improvement and provide all the statistics you need.</q>
         </div>

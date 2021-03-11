@@ -237,8 +237,6 @@
 
             &-legend {
                 @include flexy($dir: row, $just: flex-start, $align: center);
-                margin-left: 1.25rem;
-                margin-bottom: 1.25rem;
                 padding: .75rem;
                 width: 100%;
                 background-color: $color-tertiary;

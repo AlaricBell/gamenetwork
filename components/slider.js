@@ -42,7 +42,7 @@ export default class Slider extends Component {
                 item2.classList.add('next');
                 item3.classList.add('hide');
             }
-        }, 3000)
+        }, 2500)
     }
 
     componentDidMount() {

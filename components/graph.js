@@ -15,8 +15,7 @@ export default class Graph extends Component {
                     legend: {
                     display: false,
                     },
-                }}
-                    />
+                }}/>
             </div>
         )
     }
