@@ -19,7 +19,7 @@ export default class Legend extends Component {
 
     render() {
         return (   
-            <div className="col-6 container-graph-top">
+            <div className="col-md-6 col-12 container-graph-top">
                     <div className="container-graph-top-legend">
                         <img src={this.props.top.image} alt="img" height={120}/>
                         <div className="container-graph-top-detail">

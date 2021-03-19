@@ -4,6 +4,134 @@
 .container {
     background-color: $color-secondary;
 
+    &-match {
+        @include flexy($dir: column, $just: center, $align: center);
+        color: $color-font-secondary;
+        
+        &-header {
+            @include flexy($dir: column, $just: center, $align: flex-start);
+            width: 100%;
+            padding: .45rem .75rem;
+            color: $color-font-secondary;
+            background: linear-gradient(45deg, darken($color-font-primary, 20%), $color-font-primary);
+
+            h4 {
+                color: rgba($color-font-secondary, .7);
+                font-size: 22px;
+                font-weight: weight(bold);
+            }
+
+            .match-header-data {
+                @include flexy($dir: row, $just: flex-start, $align: center);
+                width: 100%;
+                font-size: 16px;
+                font-weight: weight(bold);
+
+                .match-header-date {
+                    margin-left: auto;
+                    text-align: right;
+                }
+
+                p:nth-of-type(1) {
+                    padding-right: .25rem;
+                }
+
+                p:nth-of-type(2) {
+                    padding-left: .25rem;
+                }
+            }
+        }
+
+        .match-header,
+        .match-content {
+            @include flexy($dir: row, $just: flex-start, $align: center);
+            width: 100%;
+        }
+
+        .match-header {
+            background-color: $color-primary;
+            padding: .45rem .75rem;
+
+            h5 {
+                margin-right: auto;
+            }
+        }
+
+        .match-content {
+            background-color: $color-tertiary;
+            .match-legend {
+                background-color: lighten($color-tertiary, 6%);
+                padding: .75rem;
+            }
+
+            @include mq(small) {
+                .match-legend {
+                    display: none;
+                }
+            }
+
+            @include mq(medium) {
+                .match-legend {
+                    display: none;
+                }
+            }
+
+            .match-division {
+                @include flexy($dir: column, $just: center, $align: center);
+                margin-right: .45rem;
+                margin-left: .45rem;
+                margin-top: .45rem;
+                margin-bottom: .45rem;
+                
+                h5 {
+                    margin-bottom: .25rem;
+                }
+            }
+
+            .match-stats {
+                @include flexy($dir: row, $just: flex-end, $align: center, $wrap: wrap);
+                background-color: $color-tertiary;
+                width: 100%;
+                padding: .45rem .75rem;
+
+                .match-stat {
+                    @include flexy($dir: column, $just: center, $align: center);
+                    margin-left: 1.25rem;
+                    h5 {
+                        color: rgba($color-font-secondary, .7);
+                        font-size: 18px;
+                        font-weight: weight(bold);
+                    }
+
+                    p {
+                        font-size: 20px;
+                        font-weight: weight(bold);
+                    }
+
+                    @include mq(small) {
+                        h5 {
+                            font-size: 14px;
+                        }
+    
+                        p {
+                            font-size: 16px;
+                        }
+                    }
+        
+                    @include mq(medium) {
+                        h5 {
+                            font-size: 14px;
+                        }
+    
+                        p {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     &-slider{
         padding-top: 2.75rem;
         padding-bottom: 2.75rem;
@@ -12,6 +140,7 @@
             width: 80%;
             margin-right: auto;
             margin-left: auto;
+            padding: .45rem 0;
             text-align: center;
             color: $color-font-secondary;
 
@@ -265,6 +394,18 @@
         &-info {
             @include flexy($dir: row, $just: space-between, $align: flex-start);
             padding: 1.25rem;
+
+            @include mq(small) {
+                .img-character {
+                    display: none;
+                }
+            }
+
+            @include mq(medium) {
+                .img-characte {
+                    display: none;
+                }
+            }
         }
 
         &-card {
@@ -274,19 +415,13 @@
 
     &-profile {
         &-season {
-            margin-top: -10px;
             z-index: 1000;
+            background: $color-primary;
         }
 
         &-details {
-            margin-top: -70px;
-            padding-top: 80px;
             padding-bottom: .75rem;
             background: $color-primary;
-        
-            .container-profile-stats {
-                margin-bottom: 1.25rem;
-            }
         }
 
         &-background {
@@ -327,6 +462,8 @@
 
             h2 {
                 margin-bottom: 20px;
+                font-size: 24px;
+                font-weight: weight(bold);
             }
 
             svg {
@@ -417,5 +554,31 @@
     &-right {
         margin-left: auto;
         align-items: flex-end;
+    }
+
+    @include mq(small) {
+        &-left {
+            margin-right: .25rem;
+            margin-left: auto;
+        }
+    }
+
+    @include mq(medium) {
+        &-left {
+            margin-right: .25rem;
+            margin-left: auto;
+        }
+    }
+
+    @include mq(small) {
+        &-right {
+            display: none;
+        }
+    }
+
+    @include mq(medium) {
+        &-right {
+            display: none;
+        }
     }
 }

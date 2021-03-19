@@ -5,7 +5,7 @@ export default class Graph extends Component {
 
     render() {
         return (   
-            <div className="col-4"> 
+            <div className="col-md-4 col-12"> 
                 <Bar
                 data={this.props.data}
                 width={100}

@@ -31,7 +31,7 @@ export default class Navbar extends Component {
             }
         });
 
-        window.addEventListener('scroll', this.handleScroll, false);
+        //window.addEventListener('scroll', this.handleScroll, false);
     }
 
     componentWillUnmount() {
@@ -43,7 +43,7 @@ export default class Navbar extends Component {
             <header className="navbar-wrapper">
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
                     <div className="container-fluid">
-                    <Link href="/"><a className="navbar-brand"><FontAwesomeIcon icon={faGamepad} />Gamernetwork</a></Link>
+                    <Link href="/"><a className="navbar-brand"><FontAwesomeIcon icon={faGamepad} style={{width: '45px', height: '22px'}}/>Gamernetwork</a></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -13,13 +13,13 @@ export default class Overview extends Component {
     showOverviewCardHighlighted = (data, filter) => {
         try {
           return (
-            <div className="col-3 container-card-overview">
+            <div className="col-6 col-lg-3 container-card-overview">
               <div className="card-stat card-stat-highlight">
                 <div className="card-stat-line"></div>
                 <div className="card-stat-info">
                   <p>{data.stats[filter].displayName}</p>
                   <h5>{data.stats[filter].displayValue}</h5>
-                  <p><small>Rank: {(data.stats[filter].rank != null)? data.stats[filter].rank : "none"} - Top {this.props.percentage(data.stats[filter].percentile)}%</small></p>
+                  <p><small>Top {this.props.percentage(data.stats[filter].percentile)}%</small></p>
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@ export default class Overview extends Component {
     showOverviewCard = (data, filter) => {
         try {
           return (
-            <div className="col-3">
+            <div className="col-6 col-lg-3">
               <div className="card-stat">
                 <div className="card-stat-line"></div>
                   <div className="card-stat-info">

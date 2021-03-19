@@ -1,5 +1,21 @@
 #overview {
     @extend %header;
+
+    h2 {
+        font-size: 24px;
+    }
+
+    @include mq(small) {
+        h2 {
+            font-size: 18px;
+        }
+    }
+    
+    @include mq(medium) {
+        h2 {
+            font-size: 18px;
+        }
+    }
 }
 
 header {
@@ -24,6 +40,30 @@ header {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     padding: .8rem;
+
+    h2 {
+        font-size: 24px;
+        font-weight: weight(bold);
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    @include mq(small) {
+        h2 {
+            font-size: 18px;
+            font-weight: weight(bold);
+        }
+    }
+
+    @include mq(medium) {
+        h2 {
+            font-size: 16px;
+            font-weight: weight(bold);
+        }
+    }
+
     &-main {
         padding: 1.25rem 0;
 
@@ -33,7 +73,7 @@ header {
 
         &-item {
             width: 50%;
-            padding: 1.25rem;
+            padding: 1.25rem 0;
             color: $color-font-secondary;
 
             h2 {

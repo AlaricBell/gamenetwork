@@ -49,7 +49,7 @@ export default class Home extends Component {
   render() {
     return (
       <Layout>
-        <div className="container header-main">
+        <div className="container-fluid header-main" style={{width: "85%"}}>
           <div className="row">
             <div className="header-main-item col-12 col-md-6">
               <h2>Gamer <span>Network</span></h2>
@@ -58,8 +58,8 @@ export default class Home extends Component {
             <div className="header-main-item col-12 col-md-6">
               <h2>Check us out on social media!</h2>
               <ul>
-                <li><FontAwesomeIcon icon={faDiscord}/><span>Discord</span></li>
-                <li><span>Youtube</span><FontAwesomeIcon icon={faYoutube}/></li>
+                <li><FontAwesomeIcon icon={faDiscord} style={{width: '25px', height: '20px'}}/><span>Discord</span></li>
+                <li><span>Youtube</span><FontAwesomeIcon icon={faYoutube} style={{width: '25px', height: '20px'}}/></li>
               </ul>
             </div>
           </div>

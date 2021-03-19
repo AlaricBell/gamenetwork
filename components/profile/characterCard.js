@@ -17,13 +17,13 @@ export default class CharacterCard extends Component {
     showTotalStatForCharacter = (stats, filter) => {
       try {
         return (
-          <div className="col-4 container-hero-card">
+          <div className="col-lg-4 col-6 container-hero-card">
             <div className="card-stat">
               <div className="card-stat-line"></div>
                 <div className="card-stat-info">
                   <p>{stats[filter].displayName}</p>
                   <h5>{stats[filter].displayValue}</h5>
-                  <p><small>{stats[filter].rank != null ? "Rank: " + stats[filter].rank + " - " : ""} Top: {this.percentage(stats[filter].percentile)}%</small></p>
+                  <p><small>Top: {this.percentage(stats[filter].percentile)}%</small></p>
               </div>
             </div>
           </div>
@@ -41,12 +41,12 @@ export default class CharacterCard extends Component {
                 {this.showTotalMatchesForCharacter(this.props.stats)}
               </div>
               <div className="container-hero-info">
-                <Image 
-                    className="rank"
+                <img 
+                    className="img-character"
                     src={this.props.metadata.imageUrl}
                     alt="Profile avatar"
-                    width={360}
-                    height={360}/>
+                    width={320}
+                    height={320}/>
                 <div className="container-fluid p-0">
                   <div className="row">
                     {this.showTotalStatForCharacter(this.props.stats, 'kills')}

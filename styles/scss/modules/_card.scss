@@ -5,8 +5,10 @@
         background: $color-primary;
         width: 95%;
         height: 80px;
+        margin-top: -10px;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 1.25rem;
         font-weight: weight(bold);
 
         &-highlight {
@@ -30,6 +32,46 @@
 
             h5 {
                 color: $color-font-primary;
+                font-size: 20px;
+                font-weight: weight(bold);
+            }
+
+            @include mq(small) {
+                p {
+                    font-size: 12px;
+                    font-weight: weight(bold);
+                }
+            
+                small {
+                    font-size: 12px;
+                    font-weight: weight(normal);
+                    font-size: 12px;
+                }
+    
+                h5 {
+                    color: $color-font-primary;
+                    font-size: 16px;
+                    font-weight: weight(bold);
+                }
+            }
+
+            @include mq(medium) {
+                p {
+                    font-size: 12px;
+                    font-weight: weight(bold);
+                }
+            
+                small {
+                    font-size: 12px;
+                    font-weight: weight(normal);
+                    font-size: 12px;
+                }
+    
+                h5 {
+                    color: $color-font-primary;
+                    font-size: 16px;
+                    font-weight: weight(bold);
+                }
             }
         }
 
@@ -39,8 +81,8 @@
             border-radius: 50%;
             background: $color-font-primary;
             border: none;
-            margin-left: 1.25rem;
-            margin-right: 1.25rem;
+            margin-left: .45rem;
+            margin-right: .45rem;
         }
     }
 }

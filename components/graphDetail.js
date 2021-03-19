@@ -17,28 +17,38 @@ export default class GraphDetail extends Component {
             datasets: [{
               data: [],
               backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
                 'rgba(0, 255, 109, 0.2)',
-                'rgba(242, 5, 5, 0.2)',
-                'rgba(217, 208, 199, 0.2)',
-                'rgba(43, 28, 140, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
               ],
               borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
                 'rgba(0, 255, 109, 1)',
-                'rgba(242, 5, 5, 1)',
-                'rgba(217, 208, 199, 1)',
-                'rgba(43, 28, 140, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
               ],
               borderWidth: 1
             }]
@@ -127,7 +137,7 @@ export default class GraphDetail extends Component {
                     <Graph
                     data={this.state.data}/>
 
-                    <div className="col-2 container-graph-buttons">
+                    <div className="col-md-2 col-12 container-graph-buttons">
                         {this.state.options.map(option => (
                             this.renderFilterOptions(this.props.legends, option)
                         ))}

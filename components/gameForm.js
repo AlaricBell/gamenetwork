@@ -9,7 +9,7 @@ export default class GameForm extends Component {
     state = {
         username: "",
         platform: "",
-        uri: "/api/profile/",
+        uri: "/",
     }
 
     handleUsername = (e) => {
@@ -27,7 +27,7 @@ export default class GameForm extends Component {
     generateUri = (platform, username) => {
         this.setState(prevState => {
             return {
-                uri: `/api/profile/${platform}/${username}`
+                uri: `/api/apexprofile/${platform}/${username}`
             }
         })
     }

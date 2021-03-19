@@ -56,9 +56,9 @@ export default class Slider extends Component {
     render() {
         return (
             <div className="slider">
-                <img src="/img/placeholder.png" alt="" className="slider-item slider-item-1 active"/>
-                <img src="/img/placeholder.png" alt="" className="slider-item slider-item-2 next"/>
-                <img src="/img/placeholder.png" alt="" className="slider-item slider-item-3 hide"/>
+                <img src="/img/match.png" alt="" className="slider-item slider-item-1 active"/>
+                <img src="/img/match.png" alt="" className="slider-item slider-item-2 next"/>
+                <img src="/img/match.png" alt="" className="slider-item slider-item-3 hide"/>
             </div>
         )
     }

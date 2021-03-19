@@ -60,24 +60,24 @@ export default class ProfileHeader extends Component {
     getPlatform = (platform) => {
         switch(platform) {
           case "psn":
-            return <FontAwesomeIcon icon={faPlaystation} style={{width: '30px', height: '30px'}}/>;
+            return <FontAwesomeIcon icon={faPlaystation} style={{width: '25px', height: '25px'}}/>;
           case "xbl":
-            return <FontAwesomeIcon icon={faXbox} style={{width: '30px', height: '30px'}}/>;
+            return <FontAwesomeIcon icon={faXbox} style={{width: '25px', height: '25px'}}/>;
           case "origin":
-            return <FontAwesomeIcon icon={faDesktop} style={{width: '30px', height: '30px'}}/>;
+            return <FontAwesomeIcon icon={faDesktop} style={{width: '25px', height: '25px'}}/>;
           default:
-            return <FontAwesomeIcon icon={faDesktop} style={{width: '30px', height: '30px'}}/>;
+            return <FontAwesomeIcon icon={faDesktop} style={{width: '25px', height: '25px'}}/>;
         }
     }
 
     showRegion = (data) => {
         try{
             if(data.userInfo.countryCode)
-                return <h2><FontAwesomeIcon icon={faGlobe} style={{width: '30px', height: '30px'}}/>{data.userInfo.countryCode}</h2>
+                return <h2><FontAwesomeIcon icon={faGlobe} style={{width: '25px', height: '25px'}}/>{data.userInfo.countryCode}</h2>
             else 
-                return <h2 style={{opacity: "0"}}><FontAwesomeIcon icon={faGlobe} style={{width: '30px', height: '30px'}}/></h2>
+                return <h2 style={{opacity: "0"}}><FontAwesomeIcon icon={faGlobe} style={{width: '25px', height: '25px'}}/></h2>
         } catch(e) {
-            return <h2 style={{opacity: "0"}}><FontAwesomeIcon icon={faGlobe} style={{width: '30px', height: '30px'}}/></h2>
+            return <h2 style={{opacity: "0"}}><FontAwesomeIcon icon={faGlobe} style={{width: '25px', height: '25px'}}/></h2>
         } 
     }
 
@@ -118,9 +118,9 @@ export default class ProfileHeader extends Component {
                     <div className="container-profile-menu menu-left">
                         <h2>{this.getPlatform(this.props.data.platformInfo.platformSlug)}{this.props.data.platformInfo.platformUserId}</h2>
                         <div className="menu-items menu-items-left">
-                        <Link href="#"><a>Overview</a></Link>
-                        <Link href="#"><a>Matches</a></Link>
-                        <Link href="#"><a>Seasons</a></Link>
+                        <Link href={"/apex/"+this.props.profileId}><a>Overview</a></Link>
+                        <Link href={"/apex/matches/"+this.props.profileId}><a>Matches</a></Link>
+                        <Link href={"/apex/seasons/"+this.props.profileId}><a>Seasons</a></Link>
                         </div>
                     </div>
 

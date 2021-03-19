@@ -1,5 +1,5 @@
 import Layout from '../../components/layout/layout-main';
-import { getAllProfileId, getOverallProfileData } from '../../lib/profiles';
+import { getAllApexProfileId, getOverallApexProfileData } from '../../lib/profiles';
 import connect from '../../database/dbConnect';
 import GraphDetail from '../../components/graphDetail';
 import CharacterCard from '../../components/profile/characterCard';
@@ -8,10 +8,7 @@ import ProfileHeader from '../../components/profile/profileHeader';
 
 
 export async function getStaticPaths() {
-    //const paths = getAllProfileId()
-    connect();
-    const profiles = await getAllProfileId();
-    const paths = profiles.map(profile => `/game/${profile._id}`);
+    const paths = await getAllApexProfileId();
 
     return {
       paths,
@@ -20,10 +17,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const profileData = await getOverallProfileData(params.id)
+    const profileData = await getOverallApexProfileData(params.id)
     return {
       props: {
-        profileData
+        profileData,
+        profileId: params.id
       }
     }
 }
@@ -102,15 +100,16 @@ const getLegends = (datas) => {
                                                               && data.stats != undefined
                                                               && data.metadata.name != undefined
                                                               && data.metadata.imageUrl != undefined
-                                                              && getStatCount(data.stats) > 2);
+                                                              && getStatCount(data.stats) > 0);
   return legends;
 }
 
-export default function Playstation({profileData}) {
+export default function Playstation({profileData, profileId}) {
     return (
         <Layout> 
           <ProfileHeader 
-          data={profileData}/>
+          data={profileData}
+          profileId={profileId}/>
 
           <Overview 
           profileData={profileData.segments[0]}
