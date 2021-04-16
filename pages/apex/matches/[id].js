@@ -2,9 +2,7 @@ import Layout from '../../../components/layout/layout-main';
 import { getAllApexMatchesId, getOverallApexProfileData } from '../../../lib/profiles';
 import ProfileHeader from '../../../components/profile/profileHeader';
 import MatchHistory from '../../../components/profile/matchHistory';
-
-import { parseISO, format } from 'date-fns'
-
+import { getAllGameData } from '../../../lib/games';
 
 export async function getStaticPaths() {
     const paths = await getAllApexMatchesId();
@@ -16,10 +14,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const profileData = await getOverallApexProfileData(params.id)
+    const profileData = await getOverallApexProfileData(params.id);
+    let games = await getAllGameData();
+    games = JSON.parse(games);
     return {
       props: {
         profileData,
+        games,
         profileId: params.id
       }
     }
@@ -36,9 +37,9 @@ const getmatchDateInterval = (profileData) => {
             date2.getFullYear() + "." + date2.getMonth() + "." + date2.getDate();
 }
 
-export default function Playstation({profileData, profileId}) {
+export default function Index({profileData, profileId, games}) {
     return (
-        <Layout> 
+        <Layout games={games}> 
           <ProfileHeader 
           data={profileData}
           profileId={profileId}/>
@@ -51,9 +52,10 @@ export default function Playstation({profileData, profileId}) {
                     <p className="match-header-date">{getmatchDateInterval(profileData)}</p>
                 </div>
             </div>
-            {profileData.matchHistory.items.map(match => (
+            {profileData.matchHistory.items.map((match, index) => (
                 <MatchHistory 
-                matchData={match}/>
+                matchData={match}
+                key={index}/>
             ))}
           </div>
         </Layout>

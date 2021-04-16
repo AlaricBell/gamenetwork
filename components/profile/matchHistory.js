@@ -44,8 +44,7 @@ export default function MatchHistory({matchData}) {
                     <Image src={matchData.matches[0].metadata.characterIconUrl.value} width={"100px"} height={"100px"}/>  
                 </div>
                 <div className="match-division">
-                    <h5>{matchData.matches[0].stats.rankScore.metadata.rankScoreInfo.name}</h5>
-                    <Image src={matchData.matches[0].stats.rankScore.metadata.rankScoreInfo.image} width={"50px"} height={"50px"}/>  
+                    <img src={matchData.matches[0].stats.rankScore.metadata.rankScoreInfo.image} width={"50px"} height={"50px"}/>  
                 </div>
                 <div className="match-stats">
                     <div className="match-stat">

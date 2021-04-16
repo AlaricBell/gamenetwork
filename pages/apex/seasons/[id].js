@@ -1,13 +1,12 @@
-import Layout from '../../components/layout/layout-main';
-import { getAllApexProfileId, getOverallApexProfileData } from '../../lib/profiles';
-import GraphDetail from '../../components/graphDetail';
-import CharacterCard from '../../components/profile/characterCard';
-import Overview from '../../components/profile/overview';
-import ProfileHeader from '../../components/profile/profileHeader';
-import { getAllGameData } from '../../lib/games';
+import Layout from '../../../components/layout/layout-main';
+import ProfileHeader from '../../../components/profile/profileHeader';
+import GraphSeasonOverview from '../../../components/graphs/graphSeasonOverview'
+import SeasonLegendDetail from '../../../components/graphs/seasonLegendDetail'
+import { getAllGameData } from '../../../lib/games';
+import { getAllApexSeasonsId, getOverallApexProfileData } from '../../../lib/profiles';
 
 export async function getStaticPaths() {
-    const paths = await getAllApexProfileId();
+    const paths = await getAllApexSeasonsId();
     return {
       paths,
       fallback: false
@@ -27,13 +26,6 @@ export async function getStaticProps({ params }) {
     }
 }
 
-const percentage = (context) => {
-  return (100 - context).toPrecision(2);
-}
-
-/*********************************************************
-******************* VALIDATE ELEMENT *********************
-*********************************************************/
 const getStatCount = (stats) => {
   let counter = 0;
   if(stats.kills != undefined) 
@@ -112,23 +104,20 @@ export default function Index({profileData, profileId, games}) {
           data={profileData}
           profileId={profileId}/>
 
-          <Overview 
-          profileData={profileData.segments[0]}
-          percentage={percentage}/>
+          <div className="container pb-4 mt-4">
+            <div className="container-season-header">
+                <h4>Season Overview</h4>
+                <div className="match-header-data">
+                    <p>Total {profileData.matchHistory.items.length} matches</p>
+                </div>
+            </div>
 
-          <div className="container pb-4">
-          {getLegends(profileData.segments).map((legend, index) => {
-            return (
-            <CharacterCard 
-            stats={legend.stats}
-            metadata={legend.metadata}
-            key={index}/>
-            )
-          })} 
+            <GraphSeasonOverview
+            overview={profileData.segments[0]}/>
+
+            <SeasonLegendDetail 
+            profileData={profileData.segments}/>
           </div>
-
-          <GraphDetail 
-          legends={getLegends(profileData.segments)}/>
         </Layout>
     );
 }

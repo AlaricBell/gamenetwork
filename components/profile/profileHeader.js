@@ -89,17 +89,17 @@ export default class ProfileHeader extends Component {
         } 
     }
 
-    showSocialAccount = (account) => {
+    showSocialAccount = (account, index) => {
         try{
             switch(account.platformSlug) {
                 case "twitter":
-                    return <p><FontAwesomeIcon icon={faTwitter} style={{width: '15px', height: '15px'}}/>{account.platformUserIdentifier}</p>;
+                    return <p key={index}><FontAwesomeIcon icon={faTwitter} style={{width: '15px', height: '15px'}}/>{account.platformUserIdentifier}</p>;
                 case "twitch":
-                    return <p><FontAwesomeIcon icon={faTwitch} style={{width: '15px', height: '15px'}}/>{account.platformUserIdentifier}</p>;
+                    return <p key={index}><FontAwesomeIcon icon={faTwitch} style={{width: '15px', height: '15px'}}/>{account.platformUserIdentifier}</p>;
                 case "youtube":
-                    return <p><FontAwesomeIcon icon={faYoutube} style={{width: '15px', height: '15px'}}/>{account.platformUserIdentifier}</p>;
+                    return <p key={index}><FontAwesomeIcon icon={faYoutube} style={{width: '15px', height: '15px'}}/>{account.platformUserIdentifier}</p>;
                 default:
-                    return <p>Hello</p>;
+                    return null;
             }
         } catch(e) {
             return <p>Hello</p>;
@@ -128,7 +128,7 @@ export default class ProfileHeader extends Component {
                         {this.showRegion(this.props.data)}
                         <div className="menu-items menu-items-right">
                             {this.showViewCount(this.props.data)}
-                            {this.props.data.userInfo.socialAccounts.map((account, index) => this.showSocialAccount(account))}
+                            {this.props.data.userInfo.socialAccounts.map((account, index) => this.showSocialAccount(account, index))}
                         </div>
                     </div>
                 </div>

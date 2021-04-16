@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
-import {getAllGameData} from '../lib/games';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 
@@ -27,11 +25,11 @@ export default class Navbar extends Component {
     componentDidMount() {
         this.setState(() => {
             return {
-                games: [...getAllGameData()]
+                games: this.props.games
             }
         });
 
-        //window.addEventListener('scroll', this.handleScroll, false);
+        window.addEventListener('scroll', this.handleScroll, false);
     }
 
     componentWillUnmount() {

@@ -5,6 +5,10 @@ const apexProfileSchema = new mongoose.Schema({
         type: Object,
         required: true,
         default: {}
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
     }
 })
 

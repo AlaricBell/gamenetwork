@@ -1,88 +1,133 @@
-.card{
-    &-stat {
-        @include flexy($dir: row, $just: flex-start, $align: center);
-        border-radius: 10px;
-        background: $color-primary;
-        width: 95%;
-        height: 80px;
-        margin-top: -10px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 1.25rem;
-        font-weight: weight(bold);
+.card {
+  &-admin {
+    @include flexy($dir: row, $just: space-between, $align: center);
+    padding: 0.45rem 0.75rem;
+    border-bottom: 2px solid $color-font-primary;
 
-        &-highlight {
-            background: $color-tertiary;
-        }
-
-        &-info {
-            @include flexy($dir: column, $just: center, $align: flex-start);
-            color: $color-font-secondary;
-            
-            p {
-                font-size: 16px;
-                font-weight: weight(bold);
-            }
-        
-            small {
-                font-size: 16px;
-                font-weight: weight(normal);
-                font-size: 12px;
-            }
-
-            h5 {
-                color: $color-font-primary;
-                font-size: 20px;
-                font-weight: weight(bold);
-            }
-
-            @include mq(small) {
-                p {
-                    font-size: 12px;
-                    font-weight: weight(bold);
-                }
-            
-                small {
-                    font-size: 12px;
-                    font-weight: weight(normal);
-                    font-size: 12px;
-                }
-    
-                h5 {
-                    color: $color-font-primary;
-                    font-size: 16px;
-                    font-weight: weight(bold);
-                }
-            }
-
-            @include mq(medium) {
-                p {
-                    font-size: 12px;
-                    font-weight: weight(bold);
-                }
-            
-                small {
-                    font-size: 12px;
-                    font-weight: weight(normal);
-                    font-size: 12px;
-                }
-    
-                h5 {
-                    color: $color-font-primary;
-                    font-size: 16px;
-                    font-weight: weight(bold);
-                }
-            }
-        }
-
-        &-line {
-            height: 90%;
-            width: 2px;
-            border-radius: 50%;
-            background: $color-font-primary;
-            border: none;
-            margin-left: .45rem;
-            margin-right: .45rem;
-        }
+    &-overview {
+      border-radius: 10px;
+      background: linear-gradient(
+        15deg,
+        $color-font-primary,
+        darken($color-font-primary, 12%)
+      );
+      padding: 0.45 0.75rem;
+      color: $color-font-secondary;
     }
+  }
+
+  &-admin:nth-of-type(2n) {
+    background: $color-primary;
+  }
+
+  &-stat {
+    @include flexy($dir: row, $just: flex-start, $align: center);
+    border-radius: 10px;
+    background: $color-primary;
+    width: 95%;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.75rem;
+    font-weight: weight(bold);
+
+    &-highlight {
+      background: $color-tertiary;
+      margin-top: -10px;
+    }
+
+    &-info {
+      @include flexy($dir: column, $just: center, $align: flex-start);
+      color: $color-font-secondary;
+
+      p {
+        font-size: 16px;
+        font-weight: weight(bold);
+      }
+
+      small {
+        font-size: 16px;
+        font-weight: weight(normal);
+        font-size: 12px;
+      }
+
+      h5 {
+        color: $color-font-primary;
+        font-size: 20px;
+        font-weight: weight(bold);
+      }
+
+      @include mq(small) {
+        p {
+          font-size: 12px;
+          font-weight: weight(bold);
+        }
+
+        small {
+          font-size: 12px;
+          font-weight: weight(normal);
+          font-size: 12px;
+        }
+
+        h5 {
+          color: $color-font-primary;
+          font-size: 16px;
+          font-weight: weight(bold);
+        }
+      }
+
+      @include mq(medium) {
+        p {
+          font-size: 12px;
+          font-weight: weight(bold);
+        }
+
+        small {
+          font-size: 12px;
+          font-weight: weight(normal);
+          font-size: 12px;
+        }
+
+        h5 {
+          color: $color-font-primary;
+          font-size: 16px;
+          font-weight: weight(bold);
+        }
+      }
+    }
+
+    &-line {
+      height: 90%;
+      width: 2px;
+      border-radius: 50%;
+      background: $color-font-primary;
+      border: none;
+      margin-left: 0.45rem;
+      margin-right: 0.45rem;
+    }
+  }
+
+  &-season {
+    &-legend {
+      @include flexy($dir: row, $just: flex-start, $align: center);
+      background: lighten($color-secondary, 4%);
+      padding: 0.45rem 0.75rem;
+
+      img {
+        max-height: 120px;
+        max-width: 120px;
+      }
+
+      @include mq(small) {
+        img {
+          display: none;
+        }
+      }
+    }
+
+    &-stats {
+      @include flexy($dir: row, $just: flex-start, $align: center, $wrap: wrap);
+      width: 100%;
+    }
+  }
 }

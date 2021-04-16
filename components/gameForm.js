@@ -51,8 +51,8 @@ export default class GameForm extends Component {
                     <form action={this.state.uri} method="GET" className="form-profile" onSubmit={() => this.generateUri(this.state.platform, this.state.username)}>
                         <select name="platform" id="platform" onChange={this.handlePlatform}>
                         <option value="" hidden selected>Platform</option>
-                        {this.props.game.platforms.map(platform => (
-                            <option value={platform.platformValue}>{platform.platformDisplay}</option> 
+                        {this.props.game.platforms.map((platform, index) => (
+                            <option value={platform.platformValue} key={index}>{platform.platformDisplay}</option> 
                         ))}
                         </select>
                         <input type="text" name="username" id="username" onChange={this.handleUsername}/>

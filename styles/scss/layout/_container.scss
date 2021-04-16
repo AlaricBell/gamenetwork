@@ -1,584 +1,709 @@
 /*********************************************************
 ********************* CONTAINER *************************
 *********************************************************/
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .container {
-    background-color: $color-secondary;
+  background-color: $color-secondary;
 
-    &-match {
-        @include flexy($dir: column, $just: center, $align: center);
-        color: $color-font-secondary;
-        
-        &-header {
-            @include flexy($dir: column, $just: center, $align: flex-start);
-            width: 100%;
-            padding: .45rem .75rem;
-            color: $color-font-secondary;
-            background: linear-gradient(45deg, darken($color-font-primary, 20%), $color-font-primary);
-
-            h4 {
-                color: rgba($color-font-secondary, .7);
-                font-size: 22px;
-                font-weight: weight(bold);
-            }
-
-            .match-header-data {
-                @include flexy($dir: row, $just: flex-start, $align: center);
-                width: 100%;
-                font-size: 16px;
-                font-weight: weight(bold);
-
-                .match-header-date {
-                    margin-left: auto;
-                    text-align: right;
-                }
-
-                p:nth-of-type(1) {
-                    padding-right: .25rem;
-                }
-
-                p:nth-of-type(2) {
-                    padding-left: .25rem;
-                }
-            }
-        }
-
-        .match-header,
-        .match-content {
-            @include flexy($dir: row, $just: flex-start, $align: center);
-            width: 100%;
-        }
-
-        .match-header {
-            background-color: $color-primary;
-            padding: .45rem .75rem;
-
-            h5 {
-                margin-right: auto;
-            }
-        }
-
-        .match-content {
-            background-color: $color-tertiary;
-            .match-legend {
-                background-color: lighten($color-tertiary, 6%);
-                padding: .75rem;
-            }
-
-            @include mq(small) {
-                .match-legend {
-                    display: none;
-                }
-            }
-
-            @include mq(medium) {
-                .match-legend {
-                    display: none;
-                }
-            }
-
-            .match-division {
-                @include flexy($dir: column, $just: center, $align: center);
-                margin-right: .45rem;
-                margin-left: .45rem;
-                margin-top: .45rem;
-                margin-bottom: .45rem;
-                
-                h5 {
-                    margin-bottom: .25rem;
-                }
-            }
-
-            .match-stats {
-                @include flexy($dir: row, $just: flex-end, $align: center, $wrap: wrap);
-                background-color: $color-tertiary;
-                width: 100%;
-                padding: .45rem .75rem;
-
-                .match-stat {
-                    @include flexy($dir: column, $just: center, $align: center);
-                    margin-left: 1.25rem;
-                    h5 {
-                        color: rgba($color-font-secondary, .7);
-                        font-size: 18px;
-                        font-weight: weight(bold);
-                    }
-
-                    p {
-                        font-size: 20px;
-                        font-weight: weight(bold);
-                    }
-
-                    @include mq(small) {
-                        h5 {
-                            font-size: 14px;
-                        }
-    
-                        p {
-                            font-size: 16px;
-                        }
-                    }
-        
-                    @include mq(medium) {
-                        h5 {
-                            font-size: 14px;
-                        }
-    
-                        p {
-                            font-size: 16px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    &-slider{
-        padding-top: 2.75rem;
-        padding-bottom: 2.75rem;
-
-        h3 {
-            width: 80%;
-            margin-right: auto;
-            margin-left: auto;
-            padding: .45rem 0;
-            text-align: center;
-            color: $color-font-secondary;
-
-            span {
-                color: $color-font-primary;
-            }
-        }
-    }
-
-    &-feature {
-        color: $color-font-secondary;
-        padding-top: 2.75rem;
-        padding-bottom: 2.75rem;
-
-        hr {
-            width: 50%;
-            height: 1px;
-            background: $color-font-primary;
-            margin: .75rem auto;
-        }
-
-        .row {
-            padding-top: 2.75rem;
-        }
-
-        &-content {
-            @include flexy($dir: column, $just: center, $align: center);
-            text-align: center;
-            width: 65%;
-            margin-right: auto;
-            margin-left: auto;
-
-            svg, 
-            h4 {
-                margin-bottom: .75rem;
-            }
-
-            svg {
-                color: $color-font-primary;
-            }
-
-            p {
-                opacity: .8;
-            }
-        }
-    }
-
-    &-about {
-        color: $color-font-secondary;
-
-        .row {
-            padding-bottom: 1.75rem;
-        }
-
-        &-img {
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
-
-        &-content {
-            @include flexy($dir: column, $just: center, $align: flex-start);
-        
-            h2,
-            h3,
-            h4{
-                margin: 0 0 .35rem 0;
-            }
-
-            h2,
-            h3,
-            h4 {
-                font-weight: weight(bold);
-            }
-
-            h3 {
-                color: $color-font-primary;
-            }
-
-            p {
-                font-size: 18px;
-                opacity: .8;
-                margin-bottom: 1.5rem;
-            }
-
-            hr {
-                width: 100%;
-                height: 1px;
-                background: $color-font-primary;
-                margin-top: .75rem;
-                margin-bottom: .75rem;
-            }
-        }
-    }
-
-    &-detail {
-        @include flexy($dir: column, $just: center, $align: center);
-        padding: 0;
-        margin: 0;
-        color: $color-font-secondary;
-    }
-
-    @include mq(small) {
-        &-detail {
-            max-width: 560px;
-            margin-right: auto;
-            margin-left: auto;
-        }
-    }
+  &-admin {
+    color: white;
+    margin-top: 2.25rem;
 
     &-form {
-        width: 60%;
-        max-width: 560px;
-        height: auto; 
-        padding: 0;
-        border-radius: 10px;
-        border: 2px solid $color-font-primary;
+      @include flexy($dir: column, $just: center, $align: center);
+      margin-top: 2.25rem;
+      margin-right: auto;
+      margin-left: auto;
+      width: 90%;
+      max-width: 320px;
+      border: 2px solid $color-primary;
+    }
+
+    &-panel {
+      background: $color-tertiary;
+
+      h1 {
+        padding: 0.45rem 0.75rem;
+        font-size: 32px;
+        border-bottom: 2px solid $color-font-primary;
         background: $color-primary;
-        color: $color-font-secondary;
-
-        &-side {
-            margin: 0 0 0 auto;
-        }
-
-        @include mq(small) {
-            &-side {
-                margin: 1.75rem auto 0 auto;
-            }
-        }
-
-        &-center {
-            margin: 2.75rem auto 0;
-        }
+      }
     }
+  }
 
-    &-quote {
-        @include flexy($dir: row, $just: center, $align: center);
-        color: $color-font-secondary;
-        margin-top: 2.75rem;
-        margin-bottom: 2.75rem;
-
-        q {
-            display: inline-block;
-            width: 65%;
-            max-width: 560px;
-            padding: 0;
-            text-align: center;
-            font-weight: weight(bold);
-            font-style: italic;
-        }
-    }
-
-    &-game {
-        &-picker {
-            @include flexy($dir: column, $just: center, $align: center);
-            position: relative;
-            background: linear-gradient(darken($color-font-primary, 20%) ,$color-font-primary);
-            min-height: 60vh;
-            height: auto;
-            padding: 2.75rem 0;
-        }
-    }
-
-    &-games {
-        margin-bottom: 2.75rem;
-        &-item {
-            @include flexy($dir: column, $just: flex-end, $align: flex-start);
-            @extend %y-padding;
-            border-right: solid 2px $color-primary;
-            min-height: 340px;
-            height: 40vh;
-            cursor: pointer;
-            color: $color-font-secondary;
-            position: relative;
-
-            &:hover {
-                .img-brand {
-                    transform: translate(-50%, -50%) scale(1.2);
-                }
-            }
-
-            div {
-                @include flexy($dir: column, $just: flex-end, $align: flex-start);
-                z-index: 1000;
-
-                button {
-                    @extend %y-padding;
-                    @extend %x-padding;
-                    margin-top: .75rem;  
-                }
-            }
-
-            .img-brand {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transition: all .2s ease-in-out;
-                transform: translate(-50%, -50%);
-            }
-
-            &:last-child {
-                border: none;
-            }
-
-            @for $i from 1 through 10 {
-                &:nth-child(#{$i}) {
-                    background: linear-gradient(rgba(adjust-hue(#73030D, 35 * $i), .9), rgba(lighten(adjust-hue(#73030D, 35 * $i), 15%), .9));
-                }
-            }
-        }
+  &-season {
+    &-header {
+      @include flexy($dir: row, $just: space-between, $align: center);
+      color: $color-font-secondary;
+      background: $color-tertiary;
+      padding: 0.45rem 0.75rem;
     }
 
     &-graph {
-        &-buttons {
-            @include flexy($dir: column, $just: center, $align: flex-start);
-            color: $color-font-secondary;
-        }
-
-        &-top {
-            @include flexy($dir: column, $just: center, $align: flex-start);
-            text-align: center;           
-
-            &-legend {
-                @include flexy($dir: row, $just: flex-start, $align: center);
-                padding: .75rem;
-                width: 100%;
-                background-color: $color-tertiary;
-                border: solid 3px $color-primary;
-                border-radius: 10px;
-                color: $color-font-secondary;
-            }
-
-            &-detail {
-                @include flexy($dir: column, $just: center, $align: flex-start);
-                margin-left: 1.25rem;
-
-                h3:nth-of-type(2) {
-                    color: $color-font-primary;
-                }
-            }
-        }
+      @include flexy($dir: column, $just: flex-start, $align: center);
+      height: auto;
+      margin-bottom: 1.5rem;
     }
 
-    &-hero {
-        @extend %y-margin;
-        padding: 0;
-        background: $color-tertiary;
-        border-radius: 10px;
+    &-detail {
+      @include flexy($dir: column, $just: center, $align: center);
+      margin-bottom: 1.5rem;
+      color: $color-font-secondary;
 
-        &-info {
-            @include flexy($dir: row, $just: space-between, $align: flex-start);
-            padding: 1.25rem;
+      h5 {
+        font-size: 22px;
+      }
 
-            @include mq(small) {
-                .img-character {
-                    display: none;
-                }
-            }
+      p {
+        color: rgba($color-font-secondary, 0.8);
+        font-size: 16px;
+      }
 
-            @include mq(medium) {
-                .img-characte {
-                    display: none;
-                }
-            }
-        }
-
-        &-card {
-            @extend %y-margin;
-        }
+      hr {
+        height: 1px;
+        width: 90%;
+        margin-top: 0.45rem;
+        margin-bottom: 0.45rem;
+        background: $color-font-primary;
+      }
     }
+  }
 
-    &-profile {
-        &-season {
-            z-index: 1000;
-            background: $color-primary;
-        }
+  &-match {
+    @include flexy($dir: column, $just: center, $align: center);
+    color: $color-font-secondary;
 
-        &-details {
-            padding-bottom: .75rem;
-            background: $color-primary;
-        }
+    &-header {
+      @include flexy($dir: column, $just: center, $align: flex-start);
+      width: 100%;
+      padding: 0.45rem 0.75rem;
+      color: $color-font-secondary;
+      background: linear-gradient(
+        45deg,
+        darken($color-font-primary, 20%),
+        $color-font-primary
+      );
 
-        &-background {
-            min-width: 100%;
-            height: 12.25rem;
-            background-image: url("/img/apex.jpg");
-            background-size: cover;
-            background-origin: content-box;
-            background-position: 50%;
-            background-repeat: no-repeat;
-            margin-bottom: -55px;
-        }
+      h4 {
+        color: rgba($color-font-secondary, 0.7);
+        font-size: 22px;
+        font-weight: weight(bold);
+      }
 
-        &-bg {
-            padding: 0;
-            background: $color-tertiary;
-        }
-
-        &-main {
-            @include flexy($dir: row, $just: flex-start, $align: center);
-            z-index: 1000;
-            background: $color-tertiary;
-            height: 110px;
-        }
-
-        &-menu {
-            @include flexy($dir: column, $just: center, $align: flex-start);
-            margin-left: 1.25rem;
-            height: 100%;
-            z-index: 1000;
-
-            p,
-            h2,
-            a {
-                margin: 0;
-                color: $color-font-secondary;
-            }
-
-            h2 {
-                margin-bottom: 20px;
-                font-size: 24px;
-                font-weight: weight(bold);
-            }
-
-            svg {
-                margin-right: .45rem;
-            }
-        }
-    }
-    
-
-    &-avatar {
+      .match-header-data {
         @include flexy($dir: row, $just: flex-start, $align: center);
-        background: linear-gradient(darken($color-font-primary, 20%) ,$color-font-primary);
-        padding: 1.25rem;
+        width: 100%;
+        font-size: 16px;
+        font-weight: weight(bold);
+
+        .match-header-date {
+          margin-left: auto;
+          text-align: right;
+        }
+
+        p:nth-of-type(1) {
+          padding-right: 0.25rem;
+        }
+
+        p:nth-of-type(2) {
+          padding-left: 0.25rem;
+        }
+      }
+    }
+
+    .match-header,
+    .match-content {
+      @include flexy($dir: row, $just: flex-start, $align: center);
+      width: 100%;
+    }
+
+    .match-header {
+      background-color: $color-primary;
+      padding: 0.45rem 0.75rem;
+
+      h5 {
+        margin-right: auto;
+      }
+    }
+
+    .match-content {
+      background-color: $color-tertiary;
+      .match-legend {
+        background-color: lighten($color-tertiary, 6%);
+        padding: 0.75rem;
+      }
+
+      @include mq(small) {
+        .match-legend {
+          display: none;
+        }
+      }
+
+      @include mq(medium) {
+        .match-legend {
+          display: none;
+        }
+      }
+
+      .match-division {
+        @include flexy($dir: column, $just: center, $align: center);
+        margin-right: 0.45rem;
+        margin-left: 0.45rem;
+        margin-top: 0.45rem;
+        margin-bottom: 0.45rem;
+        width: auto;
+
+        h5 {
+          margin-bottom: 0.25rem;
+          font-size: 18px;
+        }
+
+        @include mq(small) {
+          h5 {
+            display: none;
+          }
+        }
+
+        @include mq(medium) {
+          h5 {
+            display: none;
+          }
+        }
+      }
+
+      @include mq(small) {
+        .match-division {
+          @include flexy($dir: row, $just: flex-start, $align: center);
+        }
+      }
+
+      @include mq(medium) {
+        .match-division {
+          @include flexy($dir: row, $just: flex-start, $align: center);
+        }
+      }
+
+      .match-stats {
+        @include flexy($dir: row, $just: flex-end, $align: center, $wrap: wrap);
+        background-color: $color-tertiary;
+        width: 100%;
+        padding: 0.45rem 0.75rem;
+
+        .match-stat {
+          @include flexy($dir: column, $just: center, $align: center);
+          margin-left: 1.25rem;
+          h5 {
+            color: rgba($color-font-secondary, 0.7);
+            font-size: 18px;
+            font-weight: weight(bold);
+          }
+
+          p {
+            font-size: 20px;
+            font-weight: weight(bold);
+          }
+
+          @include mq(small) {
+            h5 {
+              font-size: 14px;
+            }
+
+            p {
+              font-size: 16px;
+            }
+          }
+
+          @include mq(medium) {
+            h5 {
+              font-size: 14px;
+            }
+
+            p {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-slider {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+
+    h3 {
+      width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+      padding: 0.45rem 0;
+      text-align: center;
+      color: $color-font-secondary;
+
+      span {
+        color: $color-font-primary;
+      }
+    }
+  }
+
+  &-feature {
+    color: $color-font-secondary;
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+
+    hr {
+      width: 50%;
+      height: 1px;
+      background: $color-font-primary;
+      margin: 0.75rem auto;
+    }
+
+    .row {
+      padding-top: 2.75rem;
+    }
+
+    &-content {
+      @include flexy($dir: column, $just: center, $align: center);
+      text-align: center;
+      width: 65%;
+      margin-right: auto;
+      margin-left: auto;
+
+      svg,
+      h4 {
+        margin-bottom: 0.75rem;
+      }
+
+      svg {
+        color: $color-font-primary;
+      }
+
+      p {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &-about {
+    color: $color-font-secondary;
+
+    .row {
+      padding-bottom: 1.75rem;
+    }
+
+    &-img {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-content {
+      @include flexy($dir: column, $just: center, $align: flex-start);
+
+      h2,
+      h3,
+      h4 {
+        margin: 0 0 0.35rem 0;
+      }
+
+      h2,
+      h3,
+      h4 {
+        font-weight: weight(bold);
+      }
+
+      h3 {
+        color: $color-font-primary;
+      }
+
+      p {
+        font-size: 18px;
+        opacity: 0.8;
+        margin-bottom: 1.5rem;
+      }
+
+      hr {
+        width: 100%;
+        height: 1px;
+        background: $color-font-primary;
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
+  &-detail {
+    @include flexy($dir: column, $just: center, $align: center);
+    padding: 0;
+    margin: 0;
+    color: $color-font-secondary;
+  }
+
+  @include mq(small) {
+    &-detail {
+      max-width: 560px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  &-form {
+    width: 60%;
+    max-width: 560px;
+    height: auto;
+    padding: 0;
+    border-radius: 10px;
+    border: 2px solid $color-font-primary;
+    background: $color-primary;
+    color: $color-font-secondary;
+
+    &-side {
+      margin: 0 0 0 auto;
+    }
+
+    @include mq(small) {
+      &-side {
+        margin: 1.75rem auto 0 auto;
+      }
+    }
+
+    &-center {
+      margin: 2.75rem auto 0;
+    }
+  }
+
+  &-quote {
+    @include flexy($dir: row, $just: center, $align: center);
+    color: $color-font-secondary;
+    margin-top: 2.75rem;
+    margin-bottom: 2.75rem;
+    max-width: 75%;
+
+    q {
+      display: inline-block;
+      max-width: 560px;
+      padding: 0;
+      text-align: center;
+      font-weight: weight(bold);
+      font-style: italic;
+    }
+  }
+
+  &-game {
+    &-picker {
+      @include flexy($dir: column, $just: center, $align: center);
+      position: relative;
+      background: linear-gradient(
+        darken($color-font-primary, 20%),
+        $color-font-primary
+      );
+      min-height: 60vh;
+      height: auto;
+      padding: 2.75rem 0;
+    }
+  }
+
+  &-games {
+    margin-bottom: 2.75rem;
+    &-item {
+      @include flexy($dir: column, $just: flex-end, $align: flex-start);
+      @extend %y-padding;
+      border-right: solid 2px $color-primary;
+      min-height: 340px;
+      height: 40vh;
+      cursor: pointer;
+      color: $color-font-secondary;
+      position: relative;
+
+      &:hover {
+        .img-brand {
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+      }
+
+      div {
+        @include flexy($dir: column, $just: flex-end, $align: flex-start);
         z-index: 1000;
 
-        &-header {
-            @extend %y-padding;
-            margin-top: 1.25rem;
-            background: $color-primary;
-            
-            h2,
-            p {
-                margin-bottom: 0;
-                color: $color-font-secondary;
-                font-weight: weight(bold);
-            }
+        button {
+          @extend %y-padding;
+          @extend %x-padding;
+          margin-top: 0.75rem;
         }
+      }
 
-        &-img {
-            margin-right: 1.2em;
-            @include flexy($just: center, $align: center);
+      .img-brand {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition: all 0.2s ease-in-out;
+        transform: translate(-50%, -50%);
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          background: linear-gradient(
+            rgba(adjust-hue(#73030d, 35 * $i), 0.9),
+            rgba(lighten(adjust-hue(#73030d, 35 * $i), 15%), 0.9)
+          );
         }
-
-        &-info {
-            @include flexy($dir: column, $just: center, $align: flex-start);
-            color: $color-primary;
-
-            p {
-                font-weight: weight(bold);
-            }
-
-            p,
-            h4 {
-                margin-bottom: .2rem;
-            }
-        }
+      }
     }
+  }
+
+  &-graph {
+    &-control {
+      @include flexy($dir: column, $just: center, $align: center);
+    }
+
+    @include mq(small) {
+      &-control {
+        margin-top: 0.75rem;
+      }
+    }
+
+    @include mq(medium) {
+      &-control {
+        margin-top: 0.75rem;
+      }
+    }
+
+    &-buttons {
+      width: 100%;
+      @include flexy($dir: row, $just: flex-start, $align: center);
+    }
+
+    &-top {
+      @include flexy($dir: column, $just: center, $align: flex-start);
+      text-align: center;
+
+      &-legend {
+        @include flexy($dir: row, $just: flex-start, $align: center);
+        padding: 0.75rem;
+        width: 100%;
+        background-color: $color-tertiary;
+        border: solid 3px $color-primary;
+        color: $color-font-secondary;
+      }
+
+      &-detail {
+        @include flexy($dir: column, $just: center, $align: flex-start);
+        margin-left: 1.25rem;
+
+        h3:nth-of-type(2) {
+          color: $color-font-primary;
+        }
+      }
+    }
+  }
+
+  &-hero {
+    @extend %y-margin;
+    padding: 0;
+    background: $color-tertiary;
+    border-radius: 10px;
+
+    &-info {
+      @include flexy($dir: row, $just: space-between, $align: flex-start);
+      padding: 1.25rem;
+
+      @include mq(small) {
+        .img-character {
+          display: none;
+        }
+      }
+
+      @include mq(medium) {
+        .img-characte {
+          display: none;
+        }
+      }
+    }
+
+    &-card {
+      @include flexy($dir: row, $just: center, $align: center);
+      @extend %y-margin;
+    }
+  }
+
+  &-profile {
+    &-season {
+      z-index: 1000;
+      background: $color-primary;
+    }
+
+    &-details {
+      padding-bottom: 0.75rem;
+      background: $color-primary;
+    }
+
+    &-background {
+      min-width: 100%;
+      height: 12.25rem;
+      background-image: url("/img/apex.jpg");
+      background-size: cover;
+      background-origin: content-box;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      margin-bottom: -55px;
+    }
+
+    &-bg {
+      padding: 0;
+      background: $color-tertiary;
+    }
+
+    &-main {
+      @include flexy($dir: row, $just: flex-start, $align: center);
+      z-index: 1000;
+      background: $color-tertiary;
+      height: 110px;
+    }
+
+    &-menu {
+      @include flexy($dir: column, $just: center, $align: flex-start);
+      margin-left: 1.25rem;
+      height: 100%;
+      z-index: 1000;
+
+      p,
+      h2,
+      a {
+        margin: 0;
+        color: $color-font-secondary;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: weight(bold);
+      }
+
+      svg {
+        margin-right: 0.45rem;
+      }
+    }
+  }
+
+  &-avatar {
+    @include flexy($dir: row, $just: flex-start, $align: center);
+    background: linear-gradient(
+      darken($color-font-primary, 20%),
+      $color-font-primary
+    );
+    padding: 1.25rem;
+    z-index: 1000;
+
+    &-header {
+      @extend %y-padding;
+      margin-top: 1.25rem;
+      background: $color-primary;
+
+      h2,
+      p {
+        margin-bottom: 0;
+        color: $color-font-secondary;
+        font-weight: weight(bold);
+      }
+    }
+
+    &-img {
+      margin-right: 1.2em;
+      @include flexy($just: center, $align: center);
+    }
+
+    &-info {
+      @include flexy($dir: column, $just: center, $align: flex-start);
+      color: $color-primary;
+
+      p {
+        font-weight: weight(bold);
+      }
+
+      p,
+      h4 {
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
 }
 
 .menu {
-    &-items {
-        @include flexy($dir: row, $just: flex-start, $align: center);
-        &-right {
-            p,
-            a {
-                margin-left: 1.25rem;
-            }
-        }
-
-        &-left {
-            p,
-            a {
-                padding-right: .45rem;
-            }
-
-            a:nth-of-type(1n+2) {
-                padding-left: .45rem;
-                border-left: solid 1px $color-font-primary;
-            }
-
-            a:hover {
-                color: $color-font-primary;
-            }
-
-            a:hover,
-            a:focus,
-            a:active {
-                text-decoration: none;
-            }
-        }
-    }  
-    
-    &-left {
-        margin-right: auto;
-        align-items: flex-start;
-    }
-
+  &-items {
+    @include flexy($dir: row, $just: flex-start, $align: center);
     &-right {
-        margin-left: auto;
-        align-items: flex-end;
+      p,
+      a {
+        margin-left: 1.25rem;
+      }
     }
 
-    @include mq(small) {
-        &-left {
-            margin-right: .25rem;
-            margin-left: auto;
-        }
-    }
+    &-left {
+      p,
+      a {
+        padding-right: 0.45rem;
+      }
 
-    @include mq(medium) {
-        &-left {
-            margin-right: .25rem;
-            margin-left: auto;
-        }
-    }
+      a:nth-of-type(1n + 2) {
+        padding-left: 0.45rem;
+        border-left: solid 1px $color-font-primary;
+      }
 
-    @include mq(small) {
-        &-right {
-            display: none;
-        }
-    }
+      a:hover {
+        color: $color-font-primary;
+      }
 
-    @include mq(medium) {
-        &-right {
-            display: none;
-        }
+      a:hover,
+      a:focus,
+      a:active {
+        text-decoration: none;
+      }
     }
+  }
+
+  &-left {
+    margin-right: auto;
+    align-items: flex-start;
+  }
+
+  &-right {
+    margin-left: auto;
+    align-items: flex-end;
+  }
+
+  @include mq(small) {
+    &-left {
+      margin-right: 0.25rem;
+      margin-left: auto;
+      align-items: flex-end;
+    }
+  }
+
+  @include mq(medium) {
+    &-left {
+      margin-right: 0.25rem;
+      margin-left: auto;
+      align-items: flex-end;
+    }
+  }
+
+  @include mq(small) {
+    &-right {
+      display: none;
+    }
+  }
+
+  @include mq(medium) {
+    &-right {
+      display: none;
+    }
+  }
 }

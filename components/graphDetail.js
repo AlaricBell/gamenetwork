@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Graph from './graph';
 import Legend from './legend';
+import BtnGraph from './graphs/btnGraph';
 
 export default class GraphDetail extends Component {
     state = {
@@ -75,12 +76,9 @@ export default class GraphDetail extends Component {
         })
     }
 
-    renderFilterOptions = (legends, option) => {
+    renderFilterOptions = (legends, option, index, getGraphData) => {
         return (
-            <div className="input-grp-graph">
-                <input type="radio" name="graph" value={option.value} id="radio-match" onClick={() => this.getGraphData(legends, option.value)}/>
-                <label for="radio-match">{option.display}</label>
-            </div>
+            <button className="button-graph" key={index} onClick={() => getGraphData(legends, option.value)}>{option.value}</button>
         )
     }
 
@@ -137,14 +135,15 @@ export default class GraphDetail extends Component {
                     <Graph
                     data={this.state.data}/>
 
-                    <div className="col-md-2 col-12 container-graph-buttons">
-                        {this.state.options.map(option => (
-                            this.renderFilterOptions(this.props.legends, option)
-                        ))}
-                    </div>
+                    <div className="col-md-8 col-12 container-graph-control">
+                        <BtnGraph 
+                        options={this.state.options}
+                        data={this.props.legends}
+                        getGraphData={this.getGraphData}/>
 
-                    <Legend
-                    top={this.state.top}/>
+                        <Legend
+                        top={this.state.top}/>
+                    </div>
                 </div>
             </div>
         )

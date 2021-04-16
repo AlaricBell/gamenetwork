@@ -1,53 +1,82 @@
 .navbar {
-    padding: 0 1rem;
-    opacity: 1;
-    z-index: 10000;
-    width: 100%;
-    transition: opacity .2s ease-in-out;
+  padding: 0 1rem;
+  opacity: 1;
+  z-index: 10000;
+  width: 100%;
+  transition: opacity 0.2s ease-in-out;
 
-    &.fixed {
-        position: fixed;
-        top: 0;
-        left: 0;
-        opacity: 0.9;
-        width: 100%;
-        padding: 0 1rem;
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  &-admin {
+    height: 66px;
+  }
+
+  @include mq(small) {
+    &-admin {
+      height: 40px;
     }
+  }
+
+  @include mq(medium) {
+    &-admin {
+      height: 40px;
+    }
+  }
 }
 
-.navbar-dark  {
+.navbar-dark {
+  .navbar-brand {
+    @include flexy($dir: row, $just: flex-start, $align: center);
+    color: $color-font-primary;
+    padding-bottom: auto;
+    padding-top: auto;
+    border-bottom: solid 2px transparent;
+    outline: 0;
+
+    &:hover,
+    &:focus {
+      color: $color-font-primary;
+    }
+
+    svg {
+      margin-right: 0.1em;
+    }
+  }
+
+  @include mq(small) {
     .navbar-brand {
-        @include flexy($dir: row, $just: flex-start, $align: center);
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+
+  @include mq(medium) {
+    .navbar-brand {
+      margin: 0;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $color-font-secondary;
+      margin-bottom: 0;
+      padding-bottom: 1.25rem;
+      padding-top: 1.25rem;
+      border-bottom: solid 2px transparent;
+
+      &:hover,
+      &:active,
+      &:focus {
         color: $color-font-primary;
-        padding-bottom: auto;
-        padding-top: auto;
-        border-bottom: solid 2px transparent;
-        outline: 0;
-
-        &:hover,
-        &:focus {
-            color: $color-font-primary;
-        }
-
-        svg {
-            margin-right: .1em;
-        }
+        border-bottom-color: $color-font-primary;
+      }
     }
-
-    .navbar-nav {
-        .nav-link {
-            color: $color-font-secondary;
-            margin-bottom: 0;
-            padding-bottom: 1.25rem;
-            padding-top: 1.25rem;
-            border-bottom: solid 2px transparent;
-
-            &:hover,
-            &:active,
-            &:focus{
-                color: $color-font-primary;
-                border-bottom-color:$color-font-primary;
-            }
-        }
-    }
+  }
 }

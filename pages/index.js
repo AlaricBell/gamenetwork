@@ -4,18 +4,18 @@ import About from '../components/about'
 import Feature from '../components/feature';
 import Layout from '../components/layout/layout-main';
 import { getAllGameData } from '../lib/games';
-import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faDiscord,
   faYoutube        
 } from "@fortawesome/free-brands-svg-icons";
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
 export async function getStaticProps() {
+  let games = await getAllGameData();
+  games = JSON.parse(games);
   return {
     props: {
-      games: getAllGameData(),
+      games,
     }
   }
 }
@@ -48,7 +48,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout games={this.props.games}>
         <div className="container-fluid header-main" style={{width: "85%"}}>
           <div className="row">
             <div className="header-main-item col-12 col-md-6">
@@ -65,7 +65,7 @@ export default class Home extends Component {
           </div>
         </div>
   
-        <div className="container-fluid">
+        <div className="container-fluid p-0">
           <section className="container-games row">
           {this.props.games.map((game, index) => (
             <div key={index} className="col-md-4 col-lg-2 container-games-item">

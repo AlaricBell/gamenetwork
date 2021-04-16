@@ -1,26 +1,88 @@
 .button-danger {
-    background: transparent;
-    color: $color-font-secondary;
-    font-weight: weight(bold);
+  background: transparent;
+  color: $color-font-secondary;
+  font-weight: weight(bold);
 }
 
 .button-success {
-    background: $color-font-secondary;
-    color: $color-primary;
-    font-weight: weight(bold);
+  background: $color-font-secondary;
+  color: $color-primary;
+  font-weight: weight(bold);
+}
+
+.button-auth {
+  color: $color-font-secondary;
+  font-size: 16px;
+  font-weight: weight(bold);
+  background: linear-gradient(
+    15deg,
+    $color-font-primary,
+    darken($color-font-primary, 12%)
+  );
+  padding: 0.25rem 0.75rem;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+@include mq(medium) {
+  .button-auth {
+    font-size: 12px;
+    padding: 0;
+    background: transparent;
+    text-decoration: underline;
+    color: $color-font-primary;
+  }
+}
+
+@include mq(small) {
+  .button-auth {
+    font-size: 12px;
+    padding: 0;
+    background: transparent;
+    text-decoration: underline;
+    color: $color-font-primary;
+  }
 }
 
 .button-transparent {
-    border: solid 2px rgba($color-font-secondary, .2);
-    border-radius: 10px;  
-    background-color: rgba($color-font-secondary, .1);
-    color: $color-font-secondary;
-    font-weight: weight(bold);
+  border: solid 2px rgba($color-font-secondary, 0.2);
+  border-radius: 10px;
+  background-color: rgba($color-font-secondary, 0.1);
+  color: $color-font-secondary;
+  font-weight: weight(bold);
 
-    &:hover,
-    &:focus,
-    &:active {
-        background-color: rgba($color-font-secondary, .2);
-        border: solid 2px rgba($color-font-secondary, .3);
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: rgba($color-font-secondary, 0.2);
+    border: solid 2px rgba($color-font-secondary, 0.3);
+  }
+}
+
+.button-graph {
+  flex-grow: 1;
+  flex-shrink: 1;
+  background: linear-gradient(
+    15deg,
+    $color-font-primary,
+    darken($color-font-primary, 12%)
+  );
+  color: $color-font-secondary;
+  font-size: 14px;
+  font-weight: weight(bold);
+  text-transform: uppercase;
+  padding: 0.45rem 0;
+}
+
+@include mq(small) {
+  .button-graph {
+    font-size: 8px;
+  }
+}
+
+@include mq(medium) {
+  .button-graph {
+    font-size: 12px;
+  }
 }

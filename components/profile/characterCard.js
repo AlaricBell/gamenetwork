@@ -20,10 +20,10 @@ export default class CharacterCard extends Component {
           <div className="col-lg-4 col-6 container-hero-card">
             <div className="card-stat">
               <div className="card-stat-line"></div>
-                <div className="card-stat-info">
-                  <p>{stats[filter].displayName}</p>
-                  <h5>{stats[filter].displayValue}</h5>
-                  <p><small>Top: {this.percentage(stats[filter].percentile)}%</small></p>
+              <div className="card-stat-info">
+                <p>{stats[filter].displayName}</p>
+                <h5>{stats[filter].displayValue}</h5>
+                <p><small>Top: {this.percentage(stats[filter].percentile)}%</small></p>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@ export default class CharacterCard extends Component {
 
     render() {
         return(
-            <div className="col-12 container-hero" key={this.props.key}>
+            <div className="col-12 container-hero">
               <div className="header">
                 <h2>{this.props.metadata.name}</h2>
                 {this.showTotalMatchesForCharacter(this.props.stats)}

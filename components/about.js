@@ -16,7 +16,7 @@ export default function About() {
                 </div>
             </div>
 
-            <div className="row">
+            <div className="row pb-0">
                 <div className="col-12 col-md-6 container-about-img" data-aos="fade-right">
                     <img src="/img/placeholder.png" alt="" style={{width: '100%', height: '100%'}}/>
                 </div>

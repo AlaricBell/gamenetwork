@@ -24,3 +24,15 @@
     background: $color-primary;
     width: 100%;
 }
+
+.bg-main-theme {
+    background: linear-gradient(45deg, darken($color-font-primary, 20%), $color-font-primary);
+}
+
+.bg-dark-gray {
+    background: $color-primary;
+}
+
+.bg-light-gray {
+    background: $color-tertiary;
+}

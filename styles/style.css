@@ -13,7 +13,7 @@
   margin-bottom: 0.4rem;
 }
 
-.header-main-item ul li:nth-child(2) svg, .header-main-item ul li:nth-child(1) svg, .input-grp-graph input[type=radio] {
+.header-main-item ul li:nth-child(2) svg, .header-main-item ul li:nth-child(1) svg {
   margin-right: 0.4rem;
   margin-left: 0.4rem;
 }
@@ -26,6 +26,18 @@
   color: #FFF;
   background: #343a40;
   width: 100%;
+}
+
+.bg-main-theme {
+  background: linear-gradient(45deg, #009941, #00FF6D);
+}
+
+.bg-dark-gray {
+  background: #343a40;
+}
+
+.bg-light-gray {
+  background: #393f46;
 }
 
 html {
@@ -80,6 +92,86 @@ input:hover, input:active, input:focus {
   align-items: center;
   text-align: center;
   color: #FFF;
+}
+.form-header-admin {
+  width: 100%;
+  border-bottom: 2px solid #343a40;
+  text-align: center;
+  padding: 0.45rem 0.75rem;
+  color: #FFF;
+}
+.form-header-admin h1 {
+  font-size: 32px;
+}
+.form-admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem;
+  width: 100%;
+}
+.form-admin input {
+  color: #FFF;
+  background: #393f46;
+  border: 2px solid #343a40;
+  outline: none;
+  margin-bottom: 0.45rem;
+  padding: 0.25rem 0.45rem;
+  width: 100%;
+}
+.form-admin input:focus,
+.form-admin input:active,
+.form-admin input:hover {
+  border-bottom: 2px solid #00FF6D;
+}
+.form-admin input::placeholder {
+  color: #FFF;
+}
+.form-admin fieldset {
+  width: 85%;
+  margin: 0.45rem auto;
+  border: 2px solid #00FF6D;
+  padding: 0.45rem 0;
+}
+.form-admin fieldset label {
+  display: inline-block;
+}
+.form-admin fieldset input[type=checkbox] {
+  max-width: 20px;
+}
+.form-admin fieldset .form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+.form-admin legend {
+  width: auto;
+  margin: 0 0.75rem;
+  padding: 0 0.25rem;
+}
+.form-admin-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.form-admin-nav label {
+  color: #FFF;
+  font-weight: 600;
+  margin: 0 0.45rem;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .form-admin-nav label {
+    font-size: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .form-admin-nav label {
+    font-size: 12px;
+  }
 }
 .form-profile {
   margin-top: 0.75rem;
@@ -154,6 +246,35 @@ input:hover, input:active, input:focus {
   font-weight: 600;
 }
 
+.button-auth {
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(15deg, #00FF6D, #00c253);
+  padding: 0.25rem 0.75rem;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .button-auth {
+    font-size: 12px;
+    padding: 0;
+    background: transparent;
+    text-decoration: underline;
+    color: #00FF6D;
+  }
+}
+@media (max-width: 768px) {
+  .button-auth {
+    font-size: 12px;
+    padding: 0;
+    background: transparent;
+    text-decoration: underline;
+    color: #00FF6D;
+  }
+}
 .button-transparent {
   border: solid 2px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -166,6 +287,27 @@ input:hover, input:active, input:focus {
   border: solid 2px rgba(255, 255, 255, 0.3);
 }
 
+.button-graph {
+  flex-grow: 1;
+  flex-shrink: 1;
+  background: linear-gradient(15deg, #00FF6D, #00c253);
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.45rem 0;
+}
+
+@media (max-width: 768px) {
+  .button-graph {
+    font-size: 8px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .button-graph {
+    font-size: 12px;
+  }
+}
 .custom-shape-divider-bottom-1614267563 {
   position: absolute;
   bottom: -2px;
@@ -202,6 +344,19 @@ input:hover, input:active, input:focus {
   width: 100%;
   padding: 0 1rem;
 }
+.navbar-admin {
+  height: 66px;
+}
+@media (max-width: 768px) {
+  .navbar-admin {
+    height: 40px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-admin {
+    height: 40px;
+  }
+}
 
 .navbar-dark .navbar-brand {
   display: flex;
@@ -219,6 +374,17 @@ input:hover, input:active, input:focus {
 }
 .navbar-dark .navbar-brand svg {
   margin-right: 0.1em;
+}
+@media (max-width: 768px) {
+  .navbar-dark .navbar-brand {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-dark .navbar-brand {
+    margin: 0;
+  }
 }
 .navbar-dark .navbar-nav .nav-link {
   color: #FFF;
@@ -276,6 +442,9 @@ footer .copy {
     font-size: 18px;
   }
 }
+#overview p {
+  text-align: right;
+}
 
 header {
   height: 66px;
@@ -284,12 +453,12 @@ header {
 
 @media (max-width: 768px) {
   header {
-    height: 42px;
+    height: 40px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   header {
-    height: 42px;
+    height: 40px;
   }
 }
 .header {
@@ -317,7 +486,7 @@ header {
   }
 }
 .header-main {
-  padding: 1.25rem 0;
+  margin: 1.25rem auto;
 }
 .header-main .row {
   display: flex;
@@ -327,7 +496,8 @@ header {
 }
 .header-main-item {
   width: 50%;
-  padding: 1.25rem 0;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
   color: #FFF;
 }
 .header-main-item h2 span {
@@ -342,7 +512,7 @@ header {
 .header-main-item ul li {
   width: 50%;
   border: 2px solid #FFF;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -389,6 +559,23 @@ header {
   text-align: center;
 }
 
+.card-admin {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 2px solid #00FF6D;
+}
+.card-admin-overview {
+  border-radius: 10px;
+  background: linear-gradient(15deg, #00FF6D, #00c253);
+  padding: 0.45 0.75rem;
+  color: #FFF;
+}
+.card-admin:nth-of-type(2n) {
+  background: #343a40;
+}
 .card-stat {
   display: flex;
   flex-direction: row;
@@ -398,14 +585,14 @@ header {
   background: #343a40;
   width: 95%;
   height: 80px;
-  margin-top: -10px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
   font-weight: 600;
 }
 .card-stat-highlight {
   background: #393f46;
+  margin-top: -10px;
 }
 .card-stat-info {
   display: flex;
@@ -469,6 +656,31 @@ header {
   margin-left: 0.45rem;
   margin-right: 0.45rem;
 }
+.card-season-legend {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: #464e57;
+  padding: 0.45rem 0.75rem;
+}
+.card-season-legend img {
+  max-height: 120px;
+  max-width: 120px;
+}
+@media (max-width: 768px) {
+  .card-season-legend img {
+    display: none;
+  }
+}
+.card-season-stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
 
 .icon-set svg {
   margin-left: 0.45rem;
@@ -530,8 +742,77 @@ header {
 /*********************************************************
 ********************* CONTAINER *************************
 *********************************************************/
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .container {
   background-color: #3d444b;
+}
+.container-admin {
+  color: white;
+  margin-top: 2.25rem;
+}
+.container-admin-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.25rem;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  max-width: 320px;
+  border: 2px solid #343a40;
+}
+.container-admin-panel {
+  background: #393f46;
+}
+.container-admin-panel h1 {
+  padding: 0.45rem 0.75rem;
+  font-size: 32px;
+  border-bottom: 2px solid #00FF6D;
+  background: #343a40;
+}
+.container-season-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFF;
+  background: #393f46;
+  padding: 0.45rem 0.75rem;
+}
+.container-season-graph {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+.container-season-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  color: #FFF;
+}
+.container-season-detail h5 {
+  font-size: 22px;
+}
+.container-season-detail p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+}
+.container-season-detail hr {
+  height: 1px;
+  width: 90%;
+  margin-top: 0.45rem;
+  margin-bottom: 0.45rem;
+  background: #00FF6D;
 }
 .container-match {
   display: flex;
@@ -615,9 +896,37 @@ header {
   margin-left: 0.45rem;
   margin-top: 0.45rem;
   margin-bottom: 0.45rem;
+  width: auto;
 }
 .container-match .match-content .match-division h5 {
   margin-bottom: 0.25rem;
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  .container-match .match-content .match-division h5 {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-match .match-content .match-division h5 {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .container-match .match-content .match-division {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-match .match-content .match-division {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
 .container-match .match-content .match-stats {
   display: flex;
@@ -796,10 +1105,10 @@ header {
   color: #FFF;
   margin-top: 2.75rem;
   margin-bottom: 2.75rem;
+  max-width: 75%;
 }
 .container-quote q {
   display: inline-block;
-  width: 65%;
   max-width: 560px;
   padding: 0;
   text-align: center;
@@ -885,12 +1194,28 @@ header {
 .container-games-item:nth-child(10) {
   background: linear-gradient(rgba(115, 3, 32, 0.9), rgba(190, 5, 52, 0.9));
 }
-.container-graph-buttons {
+.container-graph-control {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  color: #FFF;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .container-graph-control {
+    margin-top: 0.75rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-graph-control {
+    margin-top: 0.75rem;
+  }
+}
+.container-graph-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 .container-graph-top {
   display: flex;
@@ -908,7 +1233,6 @@ header {
   width: 100%;
   background-color: #393f46;
   border: solid 3px #343a40;
-  border-radius: 10px;
   color: #FFF;
 }
 .container-graph-top-detail {
@@ -942,6 +1266,12 @@ header {
   .container-hero-info .img-characte {
     display: none;
   }
+}
+.container-hero-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .container-profile-season {
   z-index: 1000;
@@ -1051,7 +1381,7 @@ header {
 .menu-items-left a {
   padding-right: 0.45rem;
 }
-.menu-items-left a:nth-of-type(1n+2) {
+.menu-items-left a:nth-of-type(1n + 2) {
   padding-left: 0.45rem;
   border-left: solid 1px #00FF6D;
 }
@@ -1075,12 +1405,14 @@ header {
   .menu-left {
     margin-right: 0.25rem;
     margin-left: auto;
+    align-items: flex-end;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .menu-left {
     margin-right: 0.25rem;
     margin-left: auto;
+    align-items: flex-end;
   }
 }
 @media (max-width: 768px) {
