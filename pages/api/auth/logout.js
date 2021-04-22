@@ -25,6 +25,6 @@ export default async (req, res) => {
               
               res.status(200).redirect("/");
         } else {
-            res.status(401).json({message: `Only post request is accepted`});
+            res.redirect(`/admin/desktop?error=invalid-request-provided`);
         } 
 }

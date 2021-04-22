@@ -108,7 +108,6 @@ export default function Index({profileData, profileId, games}) {
             <div className="container-season-header">
                 <h4>Season Overview</h4>
                 <div className="match-header-data">
-                    <p>Total {profileData.matchHistory.items.length} matches</p>
                 </div>
             </div>
 

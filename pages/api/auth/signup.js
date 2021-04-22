@@ -17,15 +17,21 @@ export default async (req, res) => {
                     const responseHistory = userHistory.save();
                     res.status(200).redirect('/admin/desktop');
                 } catch {
-                    res.status(401).json({message: `User already exists`});
+                    res.redirect(`/admin/desktop?error=user-cannot-be-registered`);
                 }
             });
         } else {
-            res.status(401).json({message: `Passwords do not match!`});
+            res.redirect(`/admin/desktop?error=password-do-not-match`);
         }
     } else if(req.method === 'DELETE') {
-        const responseUser = await User.deleteOne({email: req.body.email});
+        try {
+            const responseUser = await User.deleteOne({email: req.body.email});
+            const userHistory = await UserHistory.create({message: `Admin ${req.body.email} has been deleted`});  
+            const responseHistory = userHistory.save();
+        } catch {
+            res.redirect(`/admin/desktop?error=admin-cannot-be-deleted`);
+        }
     } else {
-        res.status(401).json({message: `Only post request is accepted`});
+        res.redirect(`/admin/desktop?error=invalid-request-provided`);
     } 
 }

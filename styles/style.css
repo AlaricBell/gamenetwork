@@ -1,9 +1,9 @@
-.container-avatar-header, .container-games-item div button, .container-games-item {
+.container-avatar-header, .card-games-item div button, .card-games-item {
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
 }
 
-.container-games-item div button, .header-main-item ul li:nth-child(2) span, .header-main-item ul li:nth-child(1) span {
+.card-games-item div button, .header-main-item ul li:nth-child(2) span, .header-main-item ul li:nth-child(1) span {
   padding-right: 0.4rem;
   padding-left: 0.4rem;
 }
@@ -512,7 +512,7 @@ header {
 .header-main-item ul li {
   width: 50%;
   border: 2px solid #FFF;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -559,6 +559,78 @@ header {
   text-align: center;
 }
 
+.card-games {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.75rem;
+}
+.card-games-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border-right: solid 2px #343a40;
+  min-height: 340px;
+  height: 40vh;
+  cursor: pointer;
+  color: #FFF;
+  position: relative;
+}
+.card-games-item:hover .img-brand {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+.card-games-item div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 1000;
+}
+.card-games-item div button {
+  margin-top: 0.75rem;
+}
+.card-games-item .img-brand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: all 0.2s ease-in-out;
+  transform: translate(-50%, -50%);
+}
+.card-games-item:last-child {
+  border: none;
+}
+.card-games-item:nth-child(1) {
+  background: linear-gradient(rgba(115, 58, 3, 0.9), rgba(190, 96, 5, 0.9));
+}
+.card-games-item:nth-child(2) {
+  background: linear-gradient(rgba(106, 115, 3, 0.9), rgba(175, 190, 5, 0.9));
+}
+.card-games-item:nth-child(3) {
+  background: linear-gradient(rgba(41, 115, 3, 0.9), rgba(68, 190, 5, 0.9));
+}
+.card-games-item:nth-child(4) {
+  background: linear-gradient(rgba(3, 115, 30, 0.9), rgba(5, 190, 50, 0.9));
+}
+.card-games-item:nth-child(5) {
+  background: linear-gradient(rgba(3, 115, 96, 0.9), rgba(5, 190, 158, 0.9));
+}
+.card-games-item:nth-child(6) {
+  background: linear-gradient(rgba(3, 69, 115, 0.9), rgba(5, 114, 190, 0.9));
+}
+.card-games-item:nth-child(7) {
+  background: linear-gradient(rgba(3, 4, 115, 0.9), rgba(5, 6, 190, 0.9));
+}
+.card-games-item:nth-child(8) {
+  background: linear-gradient(rgba(68, 3, 115, 0.9), rgba(112, 5, 190, 0.9));
+}
+.card-games-item:nth-child(9) {
+  background: linear-gradient(rgba(115, 3, 97, 0.9), rgba(190, 5, 160, 0.9));
+}
+.card-games-item:nth-child(10) {
+  background: linear-gradient(rgba(115, 3, 32, 0.9), rgba(190, 5, 52, 0.9));
+}
 .card-admin {
   display: flex;
   flex-direction: row;
@@ -734,6 +806,22 @@ header {
     top: -60px;
   }
 }
+.message {
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
+  width: 90%;
+  max-width: 420px;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  color: #FFF;
+  font-weight: 600;
+  text-align: center;
+}
+.message-error {
+  background: #f5b4ad;
+}
+
 .layout {
   min-height: 100vh;
   background: #3d444b;
@@ -1126,74 +1214,6 @@ header {
   height: auto;
   padding: 2.75rem 0;
 }
-.container-games {
-  margin-bottom: 2.75rem;
-}
-.container-games-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  border-right: solid 2px #343a40;
-  min-height: 340px;
-  height: 40vh;
-  cursor: pointer;
-  color: #FFF;
-  position: relative;
-}
-.container-games-item:hover .img-brand {
-  transform: translate(-50%, -50%) scale(1.2);
-}
-.container-games-item div {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  z-index: 1000;
-}
-.container-games-item div button {
-  margin-top: 0.75rem;
-}
-.container-games-item .img-brand {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transition: all 0.2s ease-in-out;
-  transform: translate(-50%, -50%);
-}
-.container-games-item:last-child {
-  border: none;
-}
-.container-games-item:nth-child(1) {
-  background: linear-gradient(rgba(115, 58, 3, 0.9), rgba(190, 96, 5, 0.9));
-}
-.container-games-item:nth-child(2) {
-  background: linear-gradient(rgba(106, 115, 3, 0.9), rgba(175, 190, 5, 0.9));
-}
-.container-games-item:nth-child(3) {
-  background: linear-gradient(rgba(41, 115, 3, 0.9), rgba(68, 190, 5, 0.9));
-}
-.container-games-item:nth-child(4) {
-  background: linear-gradient(rgba(3, 115, 30, 0.9), rgba(5, 190, 50, 0.9));
-}
-.container-games-item:nth-child(5) {
-  background: linear-gradient(rgba(3, 115, 96, 0.9), rgba(5, 190, 158, 0.9));
-}
-.container-games-item:nth-child(6) {
-  background: linear-gradient(rgba(3, 69, 115, 0.9), rgba(5, 114, 190, 0.9));
-}
-.container-games-item:nth-child(7) {
-  background: linear-gradient(rgba(3, 4, 115, 0.9), rgba(5, 6, 190, 0.9));
-}
-.container-games-item:nth-child(8) {
-  background: linear-gradient(rgba(68, 3, 115, 0.9), rgba(112, 5, 190, 0.9));
-}
-.container-games-item:nth-child(9) {
-  background: linear-gradient(rgba(115, 3, 97, 0.9), rgba(190, 5, 160, 0.9));
-}
-.container-games-item:nth-child(10) {
-  background: linear-gradient(rgba(115, 3, 32, 0.9), rgba(190, 5, 52, 0.9));
-}
 .container-graph-control {
   display: flex;
   flex-direction: column;
@@ -1290,6 +1310,19 @@ header {
   background-position: 50%;
   background-repeat: no-repeat;
   margin-bottom: -55px;
+  position: relative;
+}
+.container-profile-background h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container-profile-background h1 span:nth-of-type(1) {
+  color: #bb2020;
+}
+.container-profile-background h1 span:nth-of-type(2) {
+  color: #FFF;
 }
 .container-profile-bg {
   padding: 0;

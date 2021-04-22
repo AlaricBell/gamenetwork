@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import GameForm from '../components/gameForm'
-import About from '../components/about'
+import React, {Component} from 'react';
+import GameForm from '../components/gameForm';
+import About from '../components/about';
 import Feature from '../components/feature';
+import ErrorMessage from '../components/errorMessage';
 import Layout from '../components/layout/layout-main';
 import { getAllGameData } from '../lib/games';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,12 +11,17 @@ import {
   faYoutube        
 } from "@fortawesome/free-brands-svg-icons";
 
-export async function getStaticProps() {
+export async function getServerSideProps({query}) {
   let games = await getAllGameData();
   games = JSON.parse(games);
+  let error = null;
+  if(query.error) {
+    error = query.error;
+  }
   return {
     props: {
       games,
+      error
     }
   }
 }
@@ -46,11 +52,23 @@ export default class Home extends Component {
     })
   }
 
+  renderErrorMessage() {
+    if(this.props.error) {
+      const error = this.props.error.replace(/-/g , " ");
+      return (
+        <ErrorMessage error={error}/>
+      )
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <Layout games={this.props.games}>
         <div className="container-fluid header-main" style={{width: "85%"}}>
           <div className="row">
+            {this.renderErrorMessage()}
             <div className="header-main-item col-12 col-md-6">
               <h2>Gamer <span>Network</span></h2>
               <p>Competitive gaming is hard, let us make it easier for you.<br/> Enjoy your games and do your best, we will follow your improvement and provide all the statistics you need.</p>
@@ -66,14 +84,14 @@ export default class Home extends Component {
         </div>
   
         <div className="container-fluid p-0">
-          <section className="container-games row">
+          <section className="card-games row">
           {this.props.games.map((game, index) => (
-            <div key={index} className="col-md-4 col-lg-2 container-games-item">
+            <div key={index} className="col-12 col-md-4 card-games-item">
               <img src={"/img/apex.png"}
               className="img-brand"
               alt={"Game card"}
-              height={120}
-              width={120}/>
+              height={75}
+              width={75}/>
               <div>
                 <h4>{game.displayName}</h4>
                 <button className="button-transparent" onClick={() => this.showForm(game.name)}>View Game</button>

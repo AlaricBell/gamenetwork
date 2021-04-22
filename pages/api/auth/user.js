@@ -8,7 +8,7 @@ export const authenticated = (fn) => async (req, res) => {
         return await fn(req, res);
       }
   
-      res.status(401).json({ message: 'Sorry you are not authenticated' });
+      res.redirect(`/admin/desktop?error=Authentication-denied`);
     });
   };
   

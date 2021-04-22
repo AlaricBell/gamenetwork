@@ -2,15 +2,15 @@ import connect from '../../../database/dbConnect';
 import axios from 'axios';
 import ApexProfile from '../../../models/ApexProfile';
 
-connect();
-
 export default async (req, res) => {
+    connect();
     const {
         query: { id },
       } = req
 
-    if(id.length != 2) {
-        return res.status(404).json({message: "Invalid arguments in URI"});
+    if(id.length !== 2) {
+        res.redirect(`/?error=no-profile-found`);
+        return;
     }
 
     try {
@@ -21,9 +21,8 @@ export default async (req, res) => {
         });
 
         if(profileData.errors && profileData.errors.length > 0) {
-            return res.status(404).json({
-                message: "Profile not found!"
-            })
+            res.redirect(`/?error=no-profile-found`);
+            return;
         }
 
         const matchHistory = await axios.get(`https://public-api.tracker.gg/v2/apex/standard/profile/${id[0]}/${id[1]}/sessions`, {
@@ -33,9 +32,8 @@ export default async (req, res) => {
         });
 
         if(matchHistory.errors && matchHistory.errors.length > 0) {
-            return res.status(404).json({
-                message: "We couldn't access your match history!"
-            })
+            res.redirect(`/?error=no-profile-found`);
+            return;
         }
 
         const profiles = await ApexProfile.find({});
@@ -53,11 +51,13 @@ export default async (req, res) => {
             })
 
             if(!profile) {
-                return res.status(400).json({success: false});
+                res.redirect(`/?error=no-profile-found`);
+                return;
             }
             res.status(200).redirect(`/apex/${profile._id}`);
         }
     } catch(error) {
-        res.status(500).json({message: error.message});
+        res.redirect(`/?error=no-profile-found`);
+        return;
     }
 }

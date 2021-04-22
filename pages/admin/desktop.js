@@ -5,12 +5,17 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
+import ErrorMessage from '../../components/errorMessage';
 
 import {getAllApexData, getAllUserData} from '../../lib/profiles';
 import {getAllAdminHistoryData} from '../../lib/admin';
 import {getAllGameData} from '../../lib/games';
 
 export async function getServerSideProps(context) {
+  let error = null;
+  if(context.query.error) {
+    error = context.query.error;
+  }
   const cookies = context.req ? 
     context.req.headers.cookie : undefined;
 
@@ -46,7 +51,8 @@ export async function getServerSideProps(context) {
       apexData,
       userData,
       userHistory,
-      gameData
+      gameData,
+      error
     }
   }
 }
@@ -203,7 +209,7 @@ export default class Desktop extends Component {
     if(show) {
       return (
         <div className="container-admin-panel">
-          <h1>Register admin</h1>
+          <h1>Register game</h1>
           <form className="form-admin" action="/api/auth/game" method="POST">
             <input type="text" name="name" placeholder="Enter name"/>
             <input type="text" name="displayName" placeholder="Enter display name"/>
@@ -219,6 +225,9 @@ export default class Desktop extends Component {
                   </div>
                   <div className="col-6 form-group">
                     <input type="checkbox" name="platform" value="steam"/><label>Steam</label>
+                  </div>
+                  <div className="col-6 form-group">
+                    <input type="checkbox" name="platform" value="battlenet"/><label>Battlenet</label>
                   </div>
                   <div className="col-6 form-group">
                     <input type="checkbox" name="platform" value="origin"/><label>Origin</label>
@@ -291,6 +300,17 @@ export default class Desktop extends Component {
     });
   }
 
+  renderErrorMessage() {
+    if(this.props.error) {
+      const error = this.props.error.replace(/-/g , " ");
+      return (
+        <ErrorMessage error={error}/>
+      )
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div className="layout">
@@ -311,6 +331,7 @@ export default class Desktop extends Component {
             </nav>
         </header>
         <main className="container container-admin">
+        {this.renderErrorMessage()}
           {/* <div className="row">
             <div className="col-3 card-admin-overview">
               <h2>

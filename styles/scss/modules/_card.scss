@@ -1,4 +1,57 @@
 .card {
+  &-games {
+    @include flexy($dir: row, $just: center, $align: center);
+    margin-bottom: 2.75rem;
+    &-item {
+      @include flexy($dir: column, $just: flex-end, $align: flex-start);
+      @extend %y-padding;
+      border-right: solid 2px $color-primary;
+      min-height: 340px;
+      height: 40vh;
+      cursor: pointer;
+      color: $color-font-secondary;
+      position: relative;
+
+      &:hover {
+        .img-brand {
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+      }
+
+      div {
+        @include flexy($dir: column, $just: flex-end, $align: flex-start);
+        z-index: 1000;
+
+        button {
+          @extend %y-padding;
+          @extend %x-padding;
+          margin-top: 0.75rem;
+        }
+      }
+
+      .img-brand {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition: all 0.2s ease-in-out;
+        transform: translate(-50%, -50%);
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          background: linear-gradient(
+            rgba(adjust-hue(#73030d, 35 * $i), 0.9),
+            rgba(lighten(adjust-hue(#73030d, 35 * $i), 15%), 0.9)
+          );
+        }
+      }
+    }
+  }
+
   &-admin {
     @include flexy($dir: row, $just: space-between, $align: center);
     padding: 0.45rem 0.75rem;

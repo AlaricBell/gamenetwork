@@ -109,8 +109,10 @@ export default class ProfileHeader extends Component {
     render() {
         return (
         <>
-            <div className="col-12 container-profile-background p-0"></div>
-
+            <div className="col-12 container-profile-background p-0">
+              <h1><span>Apex</span> <span>Legends</span></h1>
+            </div>
+              
             <div className="container-fluid container-profile-bg">
                 <div className="container container-profile-main">
                     {this.getProfilePicture(this.props.data)}

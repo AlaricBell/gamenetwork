@@ -1,0 +1,16 @@
+.message {
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
+  width: 90%;
+  max-width: 420px;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  color: $color-font-secondary;
+  font-weight: weight(bold);
+  text-align: center;
+
+  &-error {
+    background: #f5b4ad;
+  }
+}

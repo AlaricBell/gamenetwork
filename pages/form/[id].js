@@ -23,15 +23,16 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({params}) {
     let gameData = await getGameDataById(params.id);
     gameData = JSON.parse(gameData);
     let games = await getAllGameData();
     games = JSON.parse(games);
+
     return {
       props: {
         gameData,
-        games
+        games,
       }
     }
 }

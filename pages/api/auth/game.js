@@ -12,6 +12,8 @@ const handleDisplayName = (name) => {
       return "Origin";
     case "steam":
       return "Steam";
+    case "battlenet":
+      return "Battlenet";
   }
 }
 
@@ -34,12 +36,18 @@ export default async (req, res) => {
           const responseHistory = userHistory.save();
           res.status(200).redirect('/admin/desktop');
       } catch {
-          res.status(401).json({message: `Game already exists`});
+          res.redirect(`/admin/desktop?error=game-already-exists`);
       }
     } else if(req.method === 'DELETE') {
-      const responseGame = await Game.deleteOne({name: req.body.name});
+      try {
+        const responseGame = await Game.deleteOne({name: req.body.name});
+        const userHistory = await UserHistory.create({message: `Game ${req.body.displayName} has been deleted`});  
+        const responseHistory = userHistory.save();
+      } catch {
+        res.redirect(`/admin/desktop?error=could-not-delete-${req.body.name}`);
+      }
     }
     else {
-        res.status(401).json({message: `Only post request is accepted`});
+        res.redirect(`/admin/desktop?error=invalid-request-provided`);
     } 
 }
