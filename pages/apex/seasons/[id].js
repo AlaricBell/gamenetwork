@@ -102,7 +102,9 @@ export default function Index({profileData, profileId, games}) {
         <Layout games={games}> 
           <ProfileHeader 
           data={profileData}
-          profileId={profileId}/>
+          profileId={profileId}
+          links={[{path: "apex", display: "Overview"}, {path: "apex/matches", display: "Matches"}, {path: "apex/seasons", display: "Seasons"}]}
+          title={"Apex Legends"}/>
 
           <div className="container pb-4 mt-4">
             <div className="container-season-header">

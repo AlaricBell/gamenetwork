@@ -510,6 +510,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        color: $color-font-secondary;
+        text-align: center;
 
         span:nth-of-type(1) {
           color: #bb2020;
@@ -587,10 +589,15 @@
 
     &-info {
       @include flexy($dir: column, $just: center, $align: flex-start);
-      color: $color-primary;
+      color: $color-font-secondary;
 
       p {
         font-weight: weight(bold);
+      }
+
+      h4 {
+        font-weight: weight(ultra);
+        color: rgba($color-font-secondary, 0.9);
       }
 
       p,

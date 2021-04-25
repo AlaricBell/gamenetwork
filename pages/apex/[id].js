@@ -2,7 +2,7 @@ import Layout from '../../components/layout/layout-main';
 import { getAllApexProfileId, getOverallApexProfileData } from '../../lib/profiles';
 import GraphDetail from '../../components/graphDetail';
 import CharacterCard from '../../components/profile/characterCard';
-import Overview from '../../components/profile/overview';
+import ApexOverview from '../../components/profile/apexOverview';
 import ProfileHeader from '../../components/profile/profileHeader';
 import { getAllGameData } from '../../lib/games';
 
@@ -110,9 +110,11 @@ export default function Index({profileData, profileId, games}) {
         <Layout games={games}> 
           <ProfileHeader 
           data={profileData}
-          profileId={profileId}/>
+          profileId={profileId}
+          links={[{path: "apex", display: "Overview"}, {path: "apex/matches", display: "Matches"}, {path: "apex/seasons", display: "Seasons"}]}
+          title={"Apex Legends"}/>
 
-          <Overview 
+          <ApexOverview 
           profileData={profileData.segments[0]}
           percentage={percentage}/>
 

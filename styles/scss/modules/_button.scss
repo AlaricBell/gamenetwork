@@ -20,6 +20,7 @@
     darken($color-font-primary, 12%)
   );
   padding: 0.25rem 0.75rem;
+  margin-top: 0.3rem;
   border: none;
   outline: none;
   border-radius: 10px;
@@ -84,5 +85,17 @@
 @include mq(medium) {
   .button-graph {
     font-size: 12px;
+  }
+}
+
+.link-seed {
+  color: $color-font-primary;
+  text-decoration: underline;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+
+  &:hover {
+    color: $color-font-primary;
+    text-decoration: underline;
   }
 }

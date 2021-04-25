@@ -40,9 +40,9 @@ export default async (req, res) => {
       }
     } else if(req.method === 'DELETE') {
       try {
-        const responseGame = await Game.deleteOne({name: req.body.name});
         const userHistory = await UserHistory.create({message: `Game ${req.body.displayName} has been deleted`});  
         const responseHistory = userHistory.save();
+        const responseGame = await Game.deleteOne({name: req.body.name});
       } catch {
         res.redirect(`/admin/desktop?error=could-not-delete-${req.body.name}`);
       }

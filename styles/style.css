@@ -234,6 +234,17 @@ input:hover, input:active, input:focus {
   border-bottom-right-radius: 10px;
 }
 
+.select-character {
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  background-color: #00FF6D;
+  color: #FFF;
+  font-weight: 800;
+  font-size: 18px;
+  outline: none;
+  border: none;
+}
+
 .button-danger {
   background: transparent;
   color: #FFF;
@@ -252,6 +263,7 @@ input:hover, input:active, input:focus {
   font-weight: 600;
   background: linear-gradient(15deg, #00FF6D, #00c253);
   padding: 0.25rem 0.75rem;
+  margin-top: 0.3rem;
   border: none;
   outline: none;
   border-radius: 10px;
@@ -308,6 +320,17 @@ input:hover, input:active, input:focus {
     font-size: 12px;
   }
 }
+.link-seed {
+  color: #00FF6D;
+  text-decoration: underline;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+.link-seed:hover {
+  color: #00FF6D;
+  text-decoration: underline;
+}
+
 .custom-shape-divider-bottom-1614267563 {
   position: absolute;
   bottom: -2px;
@@ -1317,6 +1340,8 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: #FFF;
+  text-align: center;
 }
 .container-profile-background h1 span:nth-of-type(1) {
   color: #bb2020;
@@ -1390,10 +1415,14 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  color: #343a40;
+  color: #FFF;
 }
 .container-avatar-info p {
   font-weight: 600;
+}
+.container-avatar-info h4 {
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
 }
 .container-avatar-info p,
 .container-avatar-info h4 {

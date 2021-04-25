@@ -19,7 +19,8 @@ import {
 
 export default class ProfileHeader extends Component {
     getProfilePicture = (data) => {
-        if(data.platformInfo.avatarUrl === "" || `${data.platformInfo.avatarUrl}`.startsWith(" ")) {
+      try {
+        if(data.platformInfo.avatarUrl === null || data.platformInfo.avatarUrl === "" || `${data.platformInfo.avatarUrl}`.startsWith(" ")) {
           return (
             <div className="container-avatar-img">
               <Image 
@@ -31,7 +32,6 @@ export default class ProfileHeader extends Component {
             </div>
           );
         } else {
-          try {
             return (
               <div className="container-avatar-img">
                 <Image
@@ -42,19 +42,19 @@ export default class ProfileHeader extends Component {
                 className="rank" />
               </div>
             );
-          } catch(e) {
-            return (
-              <div className="container-avatar-img">
-                <Image 
-                className="rank" 
-                src="/img/profile.png"
-                alt="Profile avatar"
-                width={70}
-                height={70}/>
-              </div>
-            );
-          }
         }
+      } catch(e) {
+        return (
+          <div className="container-avatar-img">
+            <Image 
+            className="rank" 
+            src="/img/profile.png"
+            alt="Profile avatar"
+            width={70}
+            height={70}/>
+          </div>
+        );
+      }
     }
 
     getPlatform = (platform) => {
@@ -83,7 +83,11 @@ export default class ProfileHeader extends Component {
 
     showViewCount = (data) => {
         try{
+          if(data.userInfo.pageviews !== null) {
             return <p><FontAwesomeIcon icon={faEye} style={{width: '15px', height: '15px'}}/>{data.userInfo.pageviews}</p>
+          } else {
+            return <p style={{opacity: "0"}}><FontAwesomeIcon icon={faEye} style={{width: '15px', height: '15px'}}/></p>
+          }
         } catch(e) {
             return <p style={{opacity: "0"}}><FontAwesomeIcon icon={faEye} style={{width: '15px', height: '15px'}}/></p>
         } 
@@ -102,15 +106,34 @@ export default class ProfileHeader extends Component {
                     return null;
             }
         } catch(e) {
-            return <p>Hello</p>;
+            return null;
         } 
+    }
+
+    generateHeaderNavigation(links) {
+      return links.map((link, index) => {
+        return (
+          <Link key={index} href={`/${link.path}/${this.props.profileId}`}><a>{link.display}</a></Link>
+        );
+      })
+    }
+
+    getSocialAccounts = (data) => {
+      try {
+        if(Array.isArray(data.userInfo.socialAccounts))
+          return data.userInfo.socialAccounts;
+        else
+          return [];
+      } catch {
+        return [];
+      }
     }
 
     render() {
         return (
         <>
             <div className="col-12 container-profile-background p-0">
-              <h1><span>Apex</span> <span>Legends</span></h1>
+              <h1>{this.props.title}</h1>
             </div>
               
             <div className="container-fluid container-profile-bg">
@@ -120,9 +143,7 @@ export default class ProfileHeader extends Component {
                     <div className="container-profile-menu menu-left">
                         <h2>{this.getPlatform(this.props.data.platformInfo.platformSlug)}{this.props.data.platformInfo.platformUserId}</h2>
                         <div className="menu-items menu-items-left">
-                        <Link href={"/apex/"+this.props.profileId}><a>Overview</a></Link>
-                        <Link href={"/apex/matches/"+this.props.profileId}><a>Matches</a></Link>
-                        <Link href={"/apex/seasons/"+this.props.profileId}><a>Seasons</a></Link>
+                        {this.generateHeaderNavigation(this.props.links)}
                         </div>
                     </div>
 
@@ -130,7 +151,7 @@ export default class ProfileHeader extends Component {
                         {this.showRegion(this.props.data)}
                         <div className="menu-items menu-items-right">
                             {this.showViewCount(this.props.data)}
-                            {this.props.data.userInfo.socialAccounts.map((account, index) => this.showSocialAccount(account, index))}
+                            {this.getSocialAccounts(this.props.data).map((account, index) => this.showSocialAccount(account, index))}
                         </div>
                     </div>
                 </div>

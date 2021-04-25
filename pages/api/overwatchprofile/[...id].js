@@ -23,35 +23,33 @@ export default async (req, res) => {
                 "Accept-Encoding": "gzip"
             }
         });
-        console.log(profileData.data.data);
 
         if(profileData.errors && profileData.errors.length > 0) {
-            res.redirect(`/?error=no-profile-found1`);
+            res.redirect(`/?error=no-profile-found`);
             return;
         }
 
         const profiles = await OverwatchProfile.find({});
-        let profile = profiles.filter(p => p.data.platformInfo.platformUserId == id[1]);
+        let profile = profiles.filter(p => p.data.platformInfo.platformUserId == id[1].replace('%23', '#'));
 
-        if(profile.length == 0) {
+        if(profile.length === 0) {
             profile = await OverwatchProfile.create({data: profileData.data.data});  
             const response = profile.save();
-            //res.status(200).redirect(`/overwatch/${profile._id}`);
-            res.status(200).redirect(`/`);
+            res.status(200).redirect(`/overwatch/casual/${profile._id}`);
         } else {
-            profile = await OverwatchProfile.findByIdAndUpdate(profile[0]._id, profileData, {
+            profile = await OverwatchProfile.findByIdAndUpdate(profile[0]._id, profileData.data.data, {
                 new: true,
                 runValidators: true
             })
 
             if(!profile) {
-                res.redirect(`/?error=no-profile-found2`);
+                res.redirect(`/?error=no-profile-found`);
                 return;
             }
-            res.status(200).redirect(`/overwatch/${profile._id}`);
+            res.status(200).redirect(`/overwatch/casual/${profile._id}`);
         }
     } catch(error) {
-        res.redirect(`/?error=no-profile-found3`);
+        res.redirect(`/?error=no-profile-found`);
         return;
     }
 }

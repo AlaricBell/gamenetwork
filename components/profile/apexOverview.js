@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import Image from 'next/image';
 
-export default class Overview extends Component {
+export default class ApexOverview extends Component {
     showTotalMatches = (data) => {
         try {
           return <p>Total matches: {data.matchesPlayed.value}</p>

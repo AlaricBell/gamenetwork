@@ -1,14 +1,27 @@
 export default function Legend(props){
-    return (   
-        <div className="container-graph-top-legend">
-            <img src={props.top.image} alt="img" height={120}/>
-            <div className="container-graph-top-detail">
-            <h3>Top Legend</h3>
-            <h3>{props.top.name}</h3>
-            <p>{getTopStat(props.top.filter)}: {props.top.value}</p>
+    if(props.top.image) {
+        return (   
+            <div className="container-graph-top-legend">
+                <img src={props.top.image} alt="img" height={120}/>
+                <div className="container-graph-top-detail">
+                <h3>Top Legend</h3>
+                <h3>{props.top.name}</h3>
+                <p>{getTopStat(props.top.filter)}: {props.top.value}</p>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (   
+            <div className="container-graph-top-legend">
+                <div className="container-graph-top-detail">
+                <h3>Top Legend</h3>
+                <h3>{props.top.name}</h3>
+                <p>{getTopStat(props.top.filter)}: {props.top.value}</p>
+                </div>
+            </div>
+        )
+    }
+    
 }
 
 const getTopStat = (filter) => {
@@ -23,6 +36,13 @@ const getTopStat = (filter) => {
             return "Average kills";
         case "headshots":
             return "Headshots";
-
+        case "wins":
+            return "Victories";
+        case "mostEliminations":
+            return "Most Eliminations";
+        case "mostFinalBlows":
+            return "Most Final Blows";
+        case "mostDamageDone":
+            return "Most Damage";
     }
 }

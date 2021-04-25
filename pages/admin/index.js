@@ -30,6 +30,7 @@ export default function Index(props) {
           <input type="password" name="password" placeholder="Enter password"/>
           <button type="submit" className="button-auth">Sign in</button>
         </form>
+        <a className="link-seed" href="/api/auth/seed">Set initial admin</a>
       </section>
     </Layout>
   )

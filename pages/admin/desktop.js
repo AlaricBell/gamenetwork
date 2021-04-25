@@ -154,7 +154,7 @@ export default class Desktop extends Component {
                   <p>{game.createdAt.substring(0, game.createdAt.indexOf('T'))}</p>
                 </div>
               
-                <button className="btn btn-danger" onClick={() => this.handleDeleteGame(game.name)}>Delete</button>
+                <button className="btn btn-danger" onClick={() => this.handleDeleteGame(game.name, game.displayName)}>Delete</button>
               </div>
               
             )
@@ -171,16 +171,27 @@ export default class Desktop extends Component {
         <div className="container-admin-panel">
           <h1>Registered admins</h1>
           {this.state.users.map(user => {
-            return (
-              <div className="card-admin">
-                <div>
-                  <p>{user.email}</p>
-                  <p>{user.createdAt.substring(0, user.createdAt.indexOf('T'))}</p>
+            if(user.email === this.props.email) {
+              return (
+                <div className="card-admin">
+                  <div>
+                    <p>{user.email}</p>
+                    <p>{user.createdAt.substring(0, user.createdAt.indexOf('T'))}</p>
+                  </div>
                 </div>
+              )
+            } else {
+              return (
+                <div className="card-admin">
+                  <div>
+                    <p>{user.email}</p>
+                    <p>{user.createdAt.substring(0, user.createdAt.indexOf('T'))}</p>
+                  </div>
 
-                <button className="btn btn-danger" onClick={() => this.handleDeleteUser(user.email)}>Delete</button>
-              </div>
-            )
+                  <button className="btn btn-danger" onClick={() => this.handleDeleteUser(user.email)}>Delete</button>
+                </div>
+              )
+            }
           })}
         </div>
       )
@@ -274,7 +285,7 @@ export default class Desktop extends Component {
     return null;
   }
 
-  handleDeleteGame = async (name) => {
+  handleDeleteGame = async (name, displayName) => {
     this.setState(prevState => {
       return {
         games: prevState.games.filter(game => game.name != name)
@@ -282,7 +293,8 @@ export default class Desktop extends Component {
     });
     await axios.delete('/api/auth/game', {
       data: {
-        name
+        name,
+        displayName
       }
     });
   }

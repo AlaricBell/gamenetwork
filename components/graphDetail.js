@@ -33,8 +33,18 @@ export default class GraphDetail extends Component {
                 'rgba(0, 255, 109, 0.2)',
                 'rgba(0, 255, 109, 0.2)',
                 'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
+                'rgba(0, 255, 109, 0.2)',
               ],
               borderColor: [
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
+                'rgba(0, 255, 109, 1)',
                 'rgba(0, 255, 109, 1)',
                 'rgba(0, 255, 109, 1)',
                 'rgba(0, 255, 109, 1)',
@@ -84,7 +94,7 @@ export default class GraphDetail extends Component {
 
     setOptions = (legends) => {
         let options = [];
-        let matches, kills, damage, killsPerMatch, headshots = false;
+        let matches, kills, damage, killsPerMatch, headshots, wins, mostEliminations, mostFinalBlows, mostDamageDone = false;
         legends.forEach(legend => {
             if(legend.stats.matchesPlayed){
                 matches = true;
@@ -101,8 +111,32 @@ export default class GraphDetail extends Component {
             if(legend.stats.headshots){
                 headshots = true
             }
+            if(legend.stats.mostEliminations){
+                mostEliminations = true
+            }
+            if(legend.stats.mostFinalBlows){
+                mostFinalBlows = true
+            }
+            if(legend.stats.mostDamageDone){
+                mostDamageDone = true
+            }
+            if(legend.stats.wins){
+                wins = true
+            }
         })
-
+        
+        if(wins) {
+            options.push({value: "wins", display: "Victory"})
+        }
+        if(mostDamageDone) {
+            options.push({value: "mostDamageDone", display: "Most Damage"})
+        }
+        if(mostEliminations) {
+            options.push({value: "mostEliminations", display: "Most Eliminations"})
+        }
+        if(mostFinalBlows) {
+            options.push({value: "mostFinalBlows", display: "Most Final Blows"})
+        }
         if(matches) {
             options.push({value: "matchesPlayed", display: "Matches"})
         }

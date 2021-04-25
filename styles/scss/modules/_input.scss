@@ -160,3 +160,14 @@
     }
   }
 }
+
+.select-character {
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  background-color: $color-font-primary;
+  color: $color-font-secondary;
+  font-weight: weight(ultra);
+  font-size: 18px;
+  outline: none;
+  border: none;
+}

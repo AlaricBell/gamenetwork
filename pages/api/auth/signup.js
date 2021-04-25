@@ -25,9 +25,9 @@ export default async (req, res) => {
         }
     } else if(req.method === 'DELETE') {
         try {
-            const responseUser = await User.deleteOne({email: req.body.email});
             const userHistory = await UserHistory.create({message: `Admin ${req.body.email} has been deleted`});  
             const responseHistory = userHistory.save();
+            const responseUser = await User.deleteOne({email: req.body.email});
         } catch {
             res.redirect(`/admin/desktop?error=admin-cannot-be-deleted`);
         }

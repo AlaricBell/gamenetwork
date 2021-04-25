@@ -12,7 +12,7 @@ export default class ErrorMessage extends Component {
   render() {
     if(this.state.show) {
       return (
-        <div className="col-12 my-2">
+        <div className="col-12 mt-4">
           <div className="message message-error">
             <p>{this.props.error}</p>
           </div>
