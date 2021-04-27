@@ -60,7 +60,7 @@ export default class GameForm extends Component {
     render() {
         if(this.props.formShown) {
             return (   
-                <div className="form-header" data-aos="zoom-in">
+                <div className="form-header" id="form-game" data-aos="zoom-in">
                     {this.renderToggleButton()}
                     <h1>{this.props.game.displayName}</h1>
                     <form action={this.state.uri} method="GET" className="form-profile" onSubmit={() => this.generateUri(this.state.platform, this.state.username)}>

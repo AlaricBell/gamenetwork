@@ -116,6 +116,35 @@ const getLegends = (datas) => {
   return legends;
 }
 
+const renderHeroesPanel = (heroes) => {
+  if(heroes.length > 0) {
+    return (
+    <>
+      <div className="container pb-4 px-0">
+        <row>
+          <div className="col-12">
+            <div className="header">
+              <h2>Hero Overview</h2>
+            </div>
+          </div>
+        </row>
+        <HeroOverview 
+        profileData={profileData.segments}
+        realm={"casual"}/>
+      </div>
+
+      <GraphDetail 
+      legends={heroes}/>
+    </>)
+  } else {
+    return (
+      <div className="container message-card">
+        <h3 className="w-100 text-center pb-4">No hero data found.</h3>
+      </div>
+    )
+  }
+}
+
 export default function Index({profileData, profileId, games}) {
     return (
         <Layout games={games}> 
@@ -129,21 +158,7 @@ export default function Index({profileData, profileId, games}) {
           profileData={profileData.segments[0]}
           percentage={percentage}/>
 
-          <div className="container pb-4 px-0">
-            <row>
-              <div className="col-12">
-                <div className="header">
-                  <h2>Hero Overview</h2>
-                </div>
-              </div>
-            </row>
-            <HeroOverview 
-            profileData={profileData.segments}
-            realm={"casual"}/>
-          </div>
-
-          <GraphDetail 
-          legends={getLegends(profileData.segments)}/>
+          {renderHeroesPanel(getLegends(profileData.segments))}
         </Layout>
     );
 }

@@ -1,38 +1,66 @@
 %y-padding {
-    padding-top: .4rem;
-    padding-bottom: .4rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 
 %x-padding {
-    padding-right: .4rem;
-    padding-left: .4rem;
+  padding-right: 0.4rem;
+  padding-left: 0.4rem;
 }
 
 %y-margin {
-    margin-top: .4rem;
-    margin-bottom: .4rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 %x-margin {
-    margin-right: .4rem;
-    margin-left: .4rem;
+  margin-right: 0.4rem;
+  margin-left: 0.4rem;
 }
 
 %header {
-    @include flexy($dir: row, $just: space-between, $align: center);
-    color: $color-font-secondary;
-    background: $color-primary;
-    width: 100%;
+  @include flexy($dir: row, $just: space-between, $align: center);
+  color: $color-font-secondary;
+  background: $color-primary;
+  width: 100%;
 }
 
 .bg-main-theme {
-    background: linear-gradient(45deg, darken($color-font-primary, 20%), $color-font-primary);
+  background: linear-gradient(
+    45deg,
+    darken($color-font-primary, 20%),
+    $color-font-primary
+  );
 }
 
 .bg-dark-gray {
-    background: $color-primary;
+  background: $color-primary;
 }
 
 .bg-light-gray {
-    background: $color-tertiary;
+  background: $color-tertiary;
+}
+
+@include mq(small) {
+  .reversable {
+    display: flex;
+    div:nth-of-type(1) {
+      order: 2;
+    }
+    div:nth-of-type(2) {
+      order: 1;
+    }
+  }
+}
+
+@include mq(medium) {
+  .reversable {
+    display: flex;
+    div:nth-of-type(1) {
+      order: 2;
+    }
+    div:nth-of-type(2) {
+      order: 1;
+    }
+  }
 }

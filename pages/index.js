@@ -47,9 +47,7 @@ export default class Home extends Component {
   }
 
   hideForm = () => {
-    this.setState(prevState => {
-      return {formShown: false}
-    })
+    this.setState({formShown: false})
   }
 
   renderErrorMessage() {
@@ -110,7 +108,7 @@ export default class Home extends Component {
         
 
         <div className="container container-quote">
-            <q>Competitive gaming is hard, let us make it easier for you.<br/> Enjoy your games and do your best, we will follow your improvement and provide all the statistics you need.</q>
+            <q>The game has its ups and down, but you can never lose focus of your individual goals and you can let yourself e beaten because of lack of effort.</q>
         </div>
 
         <About/>

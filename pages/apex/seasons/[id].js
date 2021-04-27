@@ -97,6 +97,49 @@ const getLegends = (datas) => {
   return legends;
 }
 
+const renderSeasonalData = (overview) => {
+  let win, kills = false;
+
+  if(overview.stats.seasonWins || 
+      overview.stats.season2Wins ||
+      overview.stats.season3Wins ||
+      overview.stats.season4Wins ||
+      overview.stats.season5Wins ||
+      overview.stats.season6Wins ||
+      overview.stats.season7Wins ||
+      overview.stats.season8Wins){
+          win = true;
+  }
+  if(overview.stats.seasonKills || 
+      overview.stats.season2Kills ||
+      overview.stats.season3Kills ||
+      overview.stats.season4Kills ||
+      overview.stats.season5Kills ||
+      overview.stats.season6Kills ||
+      overview.stats.season7Kills ||
+      overview.stats.season8Kills){
+          kills = true;
+  }
+
+  if(win || kills) {
+    return (
+      <>
+        <GraphSeasonOverview
+        overview={profileData.segments[0]}/>
+
+        <SeasonLegendDetail 
+        profileData={profileData.segments}/>
+      </>
+    )
+  } else {
+    return (
+      <div className="container message-card">
+        <h1 className="w-100 text-center py-4">No seasonal data found.</h1>
+      </div>
+    )
+  }
+}
+
 export default function Index({profileData, profileId, games}) {
     return (
         <Layout games={games}> 
@@ -113,11 +156,7 @@ export default function Index({profileData, profileId, games}) {
                 </div>
             </div>
 
-            <GraphSeasonOverview
-            overview={profileData.segments[0]}/>
-
-            <SeasonLegendDetail 
-            profileData={profileData.segments}/>
+            {renderSeasonalData(profileData.segments[0])}
           </div>
         </Layout>
     );

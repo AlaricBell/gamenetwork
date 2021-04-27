@@ -73,164 +73,6 @@
     }
   }
 
-  &-match {
-    @include flexy($dir: column, $just: center, $align: center);
-    color: $color-font-secondary;
-
-    &-header {
-      @include flexy($dir: column, $just: center, $align: flex-start);
-      width: 100%;
-      padding: 0.45rem 0.75rem;
-      color: $color-font-secondary;
-      background: linear-gradient(
-        45deg,
-        darken($color-font-primary, 20%),
-        $color-font-primary
-      );
-
-      h4 {
-        color: rgba($color-font-secondary, 0.7);
-        font-size: 22px;
-        font-weight: weight(bold);
-      }
-
-      .match-header-data {
-        @include flexy($dir: row, $just: flex-start, $align: center);
-        width: 100%;
-        font-size: 16px;
-        font-weight: weight(bold);
-
-        .match-header-date {
-          margin-left: auto;
-          text-align: right;
-        }
-
-        p:nth-of-type(1) {
-          padding-right: 0.25rem;
-        }
-
-        p:nth-of-type(2) {
-          padding-left: 0.25rem;
-        }
-      }
-    }
-
-    .match-header,
-    .match-content {
-      @include flexy($dir: row, $just: flex-start, $align: center);
-      width: 100%;
-    }
-
-    .match-header {
-      background-color: $color-primary;
-      padding: 0.45rem 0.75rem;
-
-      h5 {
-        margin-right: auto;
-      }
-    }
-
-    .match-content {
-      background-color: $color-tertiary;
-      .match-legend {
-        background-color: lighten($color-tertiary, 6%);
-        padding: 0.75rem;
-      }
-
-      @include mq(small) {
-        .match-legend {
-          display: none;
-        }
-      }
-
-      @include mq(medium) {
-        .match-legend {
-          display: none;
-        }
-      }
-
-      .match-division {
-        @include flexy($dir: column, $just: center, $align: center);
-        margin-right: 0.45rem;
-        margin-left: 0.45rem;
-        margin-top: 0.45rem;
-        margin-bottom: 0.45rem;
-        width: auto;
-
-        h5 {
-          margin-bottom: 0.25rem;
-          font-size: 18px;
-        }
-
-        @include mq(small) {
-          h5 {
-            display: none;
-          }
-        }
-
-        @include mq(medium) {
-          h5 {
-            display: none;
-          }
-        }
-      }
-
-      @include mq(small) {
-        .match-division {
-          @include flexy($dir: row, $just: flex-start, $align: center);
-        }
-      }
-
-      @include mq(medium) {
-        .match-division {
-          @include flexy($dir: row, $just: flex-start, $align: center);
-        }
-      }
-
-      .match-stats {
-        @include flexy($dir: row, $just: flex-end, $align: center, $wrap: wrap);
-        background-color: $color-tertiary;
-        width: 100%;
-        padding: 0.45rem 0.75rem;
-
-        .match-stat {
-          @include flexy($dir: column, $just: center, $align: center);
-          margin-left: 1.25rem;
-          h5 {
-            color: rgba($color-font-secondary, 0.7);
-            font-size: 18px;
-            font-weight: weight(bold);
-          }
-
-          p {
-            font-size: 20px;
-            font-weight: weight(bold);
-          }
-
-          @include mq(small) {
-            h5 {
-              font-size: 14px;
-            }
-
-            p {
-              font-size: 16px;
-            }
-          }
-
-          @include mq(medium) {
-            h5 {
-              font-size: 14px;
-            }
-
-            p {
-              font-size: 16px;
-            }
-          }
-        }
-      }
-    }
-  }
-
   &-slider {
     padding-top: 2.75rem;
     padding-bottom: 2.75rem;
@@ -404,6 +246,12 @@
       min-height: 60vh;
       height: auto;
       padding: 2.75rem 0;
+    }
+
+    @include mq(small) {
+      &-picker {
+        @include flexy($dir: column, $just: flex-start, $align: center);
+      }
     }
   }
 

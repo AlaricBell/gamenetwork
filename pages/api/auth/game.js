@@ -32,7 +32,7 @@ export default async (req, res) => {
                                           platforms});  
           const responseGame = game.save();
 
-          const userHistory = await UserHistory.create({message: `Game ${req.body.displayName} has been registered`});  
+          const userHistory = await UserHistory.create({message: `Game ${req.body.displayName} has been registered by ${req.body.admin}`});  
           const responseHistory = userHistory.save();
           res.status(200).redirect('/admin/desktop');
       } catch {
@@ -40,7 +40,7 @@ export default async (req, res) => {
       }
     } else if(req.method === 'DELETE') {
       try {
-        const userHistory = await UserHistory.create({message: `Game ${req.body.displayName} has been deleted`});  
+        const userHistory = await UserHistory.create({message: `Game ${req.body.displayName} has been deleted by ${req.body.admin}`});  
         const responseHistory = userHistory.save();
         const responseGame = await Game.deleteOne({name: req.body.name});
       } catch {

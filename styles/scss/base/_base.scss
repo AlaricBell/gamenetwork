@@ -1,25 +1,25 @@
 html {
-    position: relative;
+  position: relative;
 }
 
-html, 
+html,
 body,
 .layout {
-    min-height: 100%;
+  min-height: 100%;
 }
 
 a {
-    color: $color-font-secondary;
+  color: $color-font-secondary;
 
-    &:hover {
-        color: $color-font-secondary;
-        text-decoration: none;
-    }
+  &:hover {
+    color: $color-font-secondary;
+    text-decoration: none;
+  }
 }
 
 ul {
-    padding: 0;
-    list-style: none;
+  padding: 0;
+  list-style: none;
 }
 
 h1,
@@ -28,24 +28,28 @@ h3,
 h4,
 h5,
 h6,
-p {
-    margin: 0;
+p,
+li,
+ul,
+ol,
+a {
+  margin: 0;
 }
 
 button {
+  outline: none;
+  border: none;
+  &:hover,
+  &:active,
+  &:focus {
     outline: none;
-    border: none;
-    &:hover,
-    &:active,
-    &:focus {
-        outline: none;
-    }
+  }
 }
 
 input {
-    &:hover,
-    &:active,
-    &:focus {
-        outline: none;
-    }
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+  }
 }

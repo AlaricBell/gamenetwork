@@ -106,10 +106,12 @@
 
     select,
     input,
-    button {
+    button,
+    option {
       font-size: 18px;
       font-weight: weight(bold);
       height: 42px;
+      max-height: 42px;
     }
 
     select {

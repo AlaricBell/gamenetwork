@@ -13,7 +13,7 @@ export default async (req, res) => {
                                                     password: hash});  
                     const responseUser = user.save();
 
-                    const userHistory = await UserHistory.create({message: `Admin ${req.body.email} has been registered`});  
+                    const userHistory = await UserHistory.create({message: `Admin ${req.body.email} has been registered by ${req.body.admin}`});  
                     const responseHistory = userHistory.save();
                     res.status(200).redirect('/admin/desktop');
                 } catch {
@@ -25,7 +25,7 @@ export default async (req, res) => {
         }
     } else if(req.method === 'DELETE') {
         try {
-            const userHistory = await UserHistory.create({message: `Admin ${req.body.email} has been deleted`});  
+            const userHistory = await UserHistory.create({message: `Admin ${req.body.email} has been deleted by ${req.body.admin}`});  
             const responseHistory = userHistory.save();
             const responseUser = await User.deleteOne({email: req.body.email});
         } catch {

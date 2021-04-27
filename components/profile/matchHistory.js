@@ -13,6 +13,44 @@ const showCharacterStatForMatch = (matchData, filter) => {
     }
 }
 
+const showMatchDuration = (matchData) => {
+    try {
+        return (
+            <div className="match-stat">
+                <h5>Duration</h5>
+                <p>{matchData.metadata.duration.displayValue.substring(0, getDotIndex(matchData.metadata.duration.displayValue))}</p>
+            </div>
+        )
+    } catch {
+        return null;
+    }
+}
+
+const showMatchDivision = (matchData) => {
+    try {
+        return (
+            <div className="match-division">
+                <img src={matchData.matches[0].stats.rankScore.metadata.rankScoreInfo.image} width={"50px"} height={"50px"}/>  
+                <h5>{matchData.matches[0].stats.rankScore.metadata.rankScoreInfo.name}</h5>
+            </div>
+        )
+    } catch {
+        return null;
+    }
+}
+
+const showMatchLegend = (matchData) => {
+    try {
+        return (
+            <div className="match-legend">
+                <Image src={matchData.matches[0].metadata.characterIconUrl.value} width={"100px"} height={"100px"}/>  
+            </div>
+        )
+    } catch {
+        return null;
+    }
+}
+
 const getDotIndex = (str) => {
     if(str.indexOf('.') === -1) {
         return str.length
@@ -34,23 +72,16 @@ const getTimeFromCurrent = (dateString) => {
 
 export default function MatchHistory({matchData}) {
     return (
-        <div className="container-match">
+        <div className="card-match">
             <div className="match-header">
                 <h5>{matchData.matches[0].metadata.characterIconUrl.displayValue}</h5>
                 <p>{getTimeFromCurrent(matchData.matches[0].metadata.endDate.value)}</p>
             </div>
             <div className="match-content">
-                <div className="match-legend">
-                    <Image src={matchData.matches[0].metadata.characterIconUrl.value} width={"100px"} height={"100px"}/>  
-                </div>
-                <div className="match-division">
-                    <img src={matchData.matches[0].stats.rankScore.metadata.rankScoreInfo.image} width={"50px"} height={"50px"}/>  
-                </div>
+                {showMatchLegend(matchData)}
+                {showMatchDivision(matchData)}
                 <div className="match-stats">
-                    <div className="match-stat">
-                        <h5>Duration</h5>
-                        <p>{matchData.metadata.duration.displayValue.substring(0, getDotIndex(matchData.metadata.duration.displayValue))}</p>
-                    </div>
+                    {showMatchDuration(matchData)}
                     {showCharacterStatForMatch(matchData, "level")}
                     {showCharacterStatForMatch(matchData, "kills")}
                     {showCharacterStatForMatch(matchData, "damage")}

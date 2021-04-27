@@ -2,7 +2,7 @@ export default function About() {
     return (
         <div className="container container-about">
             <div className="row">
-                <div className="col-12 col-md-6 container-about-content" data-aos="fade-right">
+                <div className="col-12 col-lg-6 container-about-content" data-aos="fade-right">
                     <h3>Follow your progress</h3>
                     <h2>We provide detailed profile data overview to make it easier for you.</h2>
                     <hr/>
@@ -16,11 +16,11 @@ export default function About() {
                 </div>
             </div>
 
-            <div className="row pb-0">
+            <div className="row pb-0 reversable">
                 <div className="col-12 col-lg-6 container-about-img" data-aos="fade-right">
                     <img src="/img/showcase_season.png" alt="" style={{width: '100%', height: '100%'}}/>
                 </div>
-                <div className="col-12 col-md-6 container-about-content" data-aos="fade-left">
+                <div className="col-12 col-lg-6 container-about-content" data-aos="fade-left">
                     <h3>Seasonal performance overview</h3>
                     <h2>Check out our easy to understand seasonal data your favorite players.</h2>
                     <hr/>

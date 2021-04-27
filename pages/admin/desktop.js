@@ -65,7 +65,10 @@ export default class Desktop extends Component {
     adminReg: false,
     gameReg: false,
     games: this.props.gameData,
-    users: this.props.userData
+    users: this.props.userData,
+    userHistory: this.props.userHistory.sort(function(a, b) {
+      return a.createdAt > b.createdAt ? -1 : 1;
+    })
   }
 
   handleRendering(option) {
@@ -127,9 +130,9 @@ export default class Desktop extends Component {
       return (
         <div className="container-admin-panel">
           <h1>Activity History</h1>
-          {this.props.userHistory.map(item => {
+          {this.state.userHistory.map((item, index)=> {
             return (
-              <div className="card-admin">
+              <div className="card-admin" key={index}>
                 <p>{item.message}</p>
                 <p>{item.createdAt.substring(0, item.createdAt.indexOf('T'))}</p>
               </div>
@@ -146,9 +149,9 @@ export default class Desktop extends Component {
       return (
         <div className="container-admin-panel">
           <h1>Registered games</h1>
-          {this.state.games.map(game => {
+          {this.state.games.map((game , index)=> {
             return (
-              <div className="card-admin">
+              <div className="card-admin" key={index}>
                 <div>
                   <p>{game.displayName}</p>
                   <p>{game.createdAt.substring(0, game.createdAt.indexOf('T'))}</p>
@@ -205,6 +208,7 @@ export default class Desktop extends Component {
         <div className="container-admin-panel">
           <h1>Register admin</h1>
           <form className="form-admin" action="/api/auth/signup" method="POST">
+            <input type="hidden" name="admin" value={this.props.email}/>
             <input type="email" name="email" placeholder="Enter email"/>
             <input type="password" name="password" placeholder="Enter password"/>
             <input type="password" name="passwordconfirm" placeholder="Enter password again"/>
@@ -222,6 +226,7 @@ export default class Desktop extends Component {
         <div className="container-admin-panel">
           <h1>Register game</h1>
           <form className="form-admin" action="/api/auth/game" method="POST">
+            <input type="hidden" name="admin" value={this.props.email}/>
             <input type="text" name="name" placeholder="Enter name"/>
             <input type="text" name="displayName" placeholder="Enter display name"/>
             <fieldset>
@@ -294,7 +299,8 @@ export default class Desktop extends Component {
     await axios.delete('/api/auth/game', {
       data: {
         name,
-        displayName
+        displayName,
+        admin: this.props.email
       }
     });
   }
@@ -307,7 +313,8 @@ export default class Desktop extends Component {
     });
     await axios.delete('/api/auth/signup', {
       data: {
-        email
+        email,
+        admin: this.props.email
       }
     });
   }
