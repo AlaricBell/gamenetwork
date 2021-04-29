@@ -69,21 +69,28 @@ export default class GraphSeasonOverview extends Component {
         })
     }
 
-    handleIndex = (data, index) => {
-        this.setState({
-            index
-        })
+    renderOptions = () => {
+      return this.state.options.map((option, index) => {
+        return (
+          <option key={index} value={index}>{option.display}</option>
+        )
+      })
     }
+
+    handleIndex = (e) => {
+      this.setState({
+          index: e.target.value
+      })
+  }
 
     renderLegendCard = (legends) => {
       if(legends.length > 0) {
         return (
           <div className="row">
-                <div className="col-12">
-                    <BtnGraph 
-                        options={this.state.options}
-                        data={legends}
-                        getGraphData={this.handleIndex}/>
+            <div className="col-12">
+                  <select className="select-character" onChange={this.handleIndex}>
+                    {this.renderOptions()}
+                  </select> 
                 </div>
                 
                 <div className="col-12">
