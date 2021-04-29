@@ -20,7 +20,12 @@ export async function getServerSideProps(context) {
     context.req.headers.cookie : undefined;
 
   if(!cookies) {
-    
+    return {
+			redirect: {
+				destination: '/admin?error="unauthorized-login"',
+				permanent: false,
+			},
+		};
   }
 
   let apexData = await getAllApexData();

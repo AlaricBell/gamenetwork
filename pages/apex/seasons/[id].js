@@ -97,7 +97,8 @@ const getLegends = (datas) => {
   return legends;
 }
 
-const renderSeasonalData = (overview) => {
+const renderSeasonalData = (data) => {
+  let overview = data[0];
   let win, kills = false;
 
   if(overview.stats.seasonWins || 
@@ -125,10 +126,10 @@ const renderSeasonalData = (overview) => {
     return (
       <>
         <GraphSeasonOverview
-        overview={profileData.segments[0]}/>
+        overview={overview}/>
 
         <SeasonLegendDetail 
-        profileData={profileData.segments}/>
+        profileData={data}/>
       </>
     )
   } else {
@@ -156,7 +157,7 @@ export default function Index({profileData, profileId, games}) {
                 </div>
             </div>
 
-            {renderSeasonalData(profileData.segments[0])}
+            {renderSeasonalData(profileData.segments)}
           </div>
         </Layout>
     );

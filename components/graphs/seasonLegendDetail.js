@@ -75,17 +75,14 @@ export default class GraphSeasonOverview extends Component {
         })
     }
 
-    componentDidMount() {
-        this.setOptions(this.getLegends(this.props.profileData));
-    }
-
-    render() {
-        return (   
-            <div className="row">
+    renderLegendCard = (legends) => {
+      if(legends.length > 0) {
+        return (
+          <div className="row">
                 <div className="col-12">
                     <BtnGraph 
                         options={this.state.options}
-                        data={this.getLegends(this.props.profileData)}
+                        data={legends}
                         getGraphData={this.handleIndex}/>
                 </div>
                 
@@ -94,6 +91,21 @@ export default class GraphSeasonOverview extends Component {
                     legend={this.state.legends[this.state.index]}/>
                 </div>
             </div>
+        )
+      } else {
+        return null;
+      }
+    }
+
+    componentDidMount() {
+        this.setOptions(this.getLegends(this.props.profileData));
+    }
+
+    render() {
+        return (  
+          <> 
+            {this.renderLegendCard(this.getLegends(this.props.profileData))}
+          </>
         )
     }
 }
