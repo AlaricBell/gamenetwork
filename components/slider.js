@@ -57,8 +57,8 @@ export default class Slider extends Component {
         return (
             <div className="slider">
                 <img src="/img/match.png" alt="" className="slider-item slider-item-1 active"/>
-                <img src="/img/match.png" alt="" className="slider-item slider-item-2 next"/>
-                <img src="/img/match.png" alt="" className="slider-item slider-item-3 hide"/>
+                <img src="/img/match2.png" alt="" className="slider-item slider-item-2 next"/>
+                <img src="/img/match3.png" alt="" className="slider-item slider-item-3 hide"/>
             </div>
         )
     }

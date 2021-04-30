@@ -116,7 +116,7 @@ const getLegends = (datas) => {
   return legends;
 }
 
-const renderHeroesPanel = (heroes) => {
+const renderHeroesPanel = (heroes, segments) => {
   if(heroes.length > 0) {
     return (
     <>
@@ -129,7 +129,7 @@ const renderHeroesPanel = (heroes) => {
           </div>
         </row>
         <HeroOverview 
-        profileData={profileData.segments}
+        profileData={segments}
         realm={"casual"}/>
       </div>
 
@@ -158,7 +158,7 @@ export default function Index({profileData, profileId, games}) {
           profileData={profileData.segments[0]}
           percentage={percentage}/>
 
-          {renderHeroesPanel(getLegends(profileData.segments))}
+          {renderHeroesPanel(getLegends(profileData.segments), profileData.segments)}
         </Layout>
     );
 }
